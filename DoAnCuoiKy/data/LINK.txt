@@ -1,0 +1,4 @@
+Nguồn: UCI Machine Learning Repository – Product Classification and Clustering (ID 837)
+https://archive.ics.uci.edu/dataset/837/product+classification+and+clustering
+DOI: 10.24432/C5M91Z
+File: pricerunner_aggregate.csv (35.311 dòng, 7 cột)
