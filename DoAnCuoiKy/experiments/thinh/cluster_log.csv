@@ -1,0 +1,4 @@
+﻿run_id,thoi_diem_chay,git_commit,algo,K,svd,n_clusters,noise_pct,silhouette,ari,nmi,nhan_xet,rut_ra
+thinh_20261112_184246,2026-11-12 18:42:46,chua_co_git,kmeans,10,50,10,0.0,0.2936,0.563565,0.702614,,
+thinh_20261112_185129,2026-11-12 18:51:29,chua_co_git,kmeans,8,50,8,0.0,0.267513,0.455358,0.650903,,
+thinh_20261112_185303,2026-11-12 18:53:03,chua_co_git,kmeans,12,50,12,0.0,0.305139,0.513581,0.684837,,
