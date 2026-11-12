@@ -1,0 +1,3 @@
+﻿file,notebook,cell_hoac_ham,nguoi_chay,thoi_diem,y_nghia
+loc_nb_alpha_lr_C.png,04_Loc_TienXuLy_NB_LR.ipynb,Mục 6,loc,2026-11-12 22:09:14,"NB tốt nhất ở alpha nhỏ (0.01, F1=0.980); LR tăng theo C và bão hòa từ C=10 (F1≈0.967); balanced không giúp ích."
+loc_nb_alpha_lr_C.png,04_Loc_TienXuLy_NB_LR.ipynb,Mục 6,loc,2026-11-12 22:25:19,"NB tốt nhất ở alpha nhỏ (0.01, F1=0.980); LR tăng theo C và bão hòa từ C=10 (F1≈0.967); balanced không giúp ích."
