@@ -1,0 +1,668 @@
+{
+ "best_id": "E06",
+ "best_clu": "C01",
+ "n_test": 7063,
+ "n_train": 28248,
+ "cls_main": [
+  {
+   "exp_id": "E01",
+   "date": "2026-11-07",
+   "task": "Classification",
+   "model": "Multinomial Naive Bayes",
+   "features": "Word TF-IDF (1,2)",
+   "params": "{\"alpha\": 0.1}",
+   "split": "Stratified 80/20",
+   "n_train": 28248,
+   "n_test": 7063,
+   "cv_folds": 5.0,
+   "cv_accuracy_mean": 0.9602095570208212,
+   "cv_f1_macro_mean": 0.961603023612826,
+   "cv_f1_macro_std": 0.0014445041521129,
+   "cv_time_s": 2.665217638015747,
+   "train_time_s": 0.510420560836792,
+   "infer_ms_per_1k": 15.477426629658549,
+   "test_accuracy": 0.9650290244938412,
+   "test_precision_macro": 0.969564464436256,
+   "test_recall_macro": 0.9636376704603068,
+   "test_f1_macro": 0.9662830743394496,
+   "test_f1_weighted": 0.965086311434926,
+   "notes": "Baseline tham chiếu (Proposal)",
+   "features_short": "Word TF-IDF (1,2)"
+  },
+  {
+   "exp_id": "E02",
+   "date": "2026-11-07",
+   "task": "Classification",
+   "model": "Decision Tree",
+   "features": "Word TF-IDF (1,2)",
+   "params": "{\"criterion\": \"gini\", \"max_depth\": null}",
+   "split": "Stratified 80/20",
+   "n_train": 28248,
+   "n_test": 7063,
+   "cv_folds": 5.0,
+   "cv_accuracy_mean": 0.9373762887001692,
+   "cv_f1_macro_mean": 0.9374542909535672,
+   "cv_f1_macro_std": 0.0023489829613515,
+   "cv_time_s": 7.780741214752197,
+   "train_time_s": 1.779810667037964,
+   "infer_ms_per_1k": 14.502992377510054,
+   "test_accuracy": 0.939827268865921,
+   "test_precision_macro": 0.9433719523937992,
+   "test_recall_macro": 0.9387677893497904,
+   "test_f1_macro": 0.9408237522988144,
+   "test_f1_weighted": 0.9397811775373158,
+   "notes": "Baseline cây đơn",
+   "features_short": "Word TF-IDF (1,2)"
+  },
+  {
+   "exp_id": "E03",
+   "date": "2026-11-07",
+   "task": "Classification",
+   "model": "Logistic Regression",
+   "features": "Word TF-IDF (1,2)",
+   "params": "{\"C\": 10, \"penalty\": \"l2\", \"solver\": \"lbfgs\"}",
+   "split": "Stratified 80/20",
+   "n_train": 28248,
+   "n_test": 7063,
+   "cv_folds": 5.0,
+   "cv_accuracy_mean": 0.9585813449635536,
+   "cv_f1_macro_mean": 0.9602102651909716,
+   "cv_f1_macro_std": 0.0024403761888505,
+   "cv_time_s": 22.442094326019287,
+   "train_time_s": 5.394845962524414,
+   "infer_ms_per_1k": 12.994504558893231,
+   "test_accuracy": 0.9641795271131248,
+   "test_precision_macro": 0.9682435524849502,
+   "test_recall_macro": 0.963356968353595,
+   "test_f1_macro": 0.9656409006035364,
+   "test_f1_weighted": 0.964172558647452,
+   "notes": "",
+   "features_short": "Word TF-IDF (1,2)"
+  },
+  {
+   "exp_id": "E04",
+   "date": "2026-11-07",
+   "task": "Classification",
+   "model": "LinearSVC (SVM)",
+   "features": "Word TF-IDF (1,2)",
+   "params": "{\"C\": 1.0, \"loss\": \"squared_hinge\"}",
+   "split": "Stratified 80/20",
+   "n_train": 28248,
+   "n_test": 7063,
+   "cv_folds": 5.0,
+   "cv_accuracy_mean": 0.9620505908321152,
+   "cv_f1_macro_mean": 0.963350556073577,
+   "cv_f1_macro_std": 0.0014882552627066,
+   "cv_time_s": 4.827665328979492,
+   "train_time_s": 1.0777196884155271,
+   "infer_ms_per_1k": 17.076481777700472,
+   "test_accuracy": 0.96686960215206,
+   "test_precision_macro": 0.9685108208232396,
+   "test_recall_macro": 0.9674453982339198,
+   "test_f1_macro": 0.9679092360241078,
+   "test_f1_weighted": 0.9668602338002636,
+   "notes": "Baseline SVM",
+   "features_short": "Word TF-IDF (1,2)"
+  },
+  {
+   "exp_id": "E05",
+   "date": "2026-11-07",
+   "task": "Classification",
+   "model": "LinearSVC (SVM)",
+   "features": "Hybrid TF-IDF (word 1-2 + char_wb 3-5)",
+   "params": "{\"C\": 1.0}",
+   "split": "Stratified 80/20",
+   "n_train": 28248,
+   "n_test": 7063,
+   "cv_folds": 5.0,
+   "cv_accuracy_mean": 0.9889904110211376,
+   "cv_f1_macro_mean": 0.988904382121736,
+   "cv_f1_macro_std": 0.0007975401502657,
+   "cv_time_s": 19.95845079421997,
+   "train_time_s": 4.376134872436523,
+   "infer_ms_per_1k": 81.39079646316176,
+   "test_accuracy": 0.9922129406767662,
+   "test_precision_macro": 0.9920098046801342,
+   "test_recall_macro": 0.991340473018802,
+   "test_f1_macro": 0.9916710954299648,
+   "test_f1_weighted": 0.9922064991398992,
+   "notes": "RQ1: thêm char n-grams",
+   "features_short": "Hybrid TF-IDF (word + char)"
+  },
+  {
+   "exp_id": "E06",
+   "date": "2026-11-07",
+   "task": "Classification",
+   "model": "LinearSVC (SVM)",
+   "features": "Hybrid TF-IDF + Morph(5) + Merchant prior(10)",
+   "params": "{\"C\": 1.0}",
+   "split": "Stratified 80/20",
+   "n_train": 28248,
+   "n_test": 7063,
+   "cv_folds": 5.0,
+   "cv_accuracy_mean": 0.9890612012150324,
+   "cv_f1_macro_mean": 0.9888499904166276,
+   "cv_f1_macro_std": 0.0013614964665757,
+   "cv_time_s": 50.47890377044678,
+   "train_time_s": 10.257818222045898,
+   "infer_ms_per_1k": 91.58969718741912,
+   "test_accuracy": 0.9924961064703384,
+   "test_precision_macro": 0.9923383723816016,
+   "test_recall_macro": 0.9916147403869116,
+   "test_f1_macro": 0.9919708880384178,
+   "test_f1_weighted": 0.9924869154081116,
+   "notes": "RQ1: thêm đặc trưng hình thái + merchant",
+   "features_short": "Hybrid TF-IDF + Morph + Merchant"
+  },
+  {
+   "exp_id": "E07",
+   "date": "2026-11-07",
+   "task": "Classification",
+   "model": "Decision Tree",
+   "features": "SVD-150 (Hybrid TF-IDF) + Morph + Merchant prior",
+   "params": "{\"svd\": 150, \"min_samples_leaf\": 2}",
+   "split": "Stratified 80/20",
+   "n_train": 28248,
+   "n_test": 7063,
+   "cv_folds": 5.0,
+   "cv_accuracy_mean": 0.933835926791021,
+   "cv_f1_macro_mean": 0.9309415289080564,
+   "cv_f1_macro_std": 0.0033470048081687,
+   "cv_time_s": 91.35455751419067,
+   "train_time_s": 23.211491346359253,
+   "infer_ms_per_1k": 145.9174701010693,
+   "test_accuracy": 0.9384114398980604,
+   "test_precision_macro": 0.9355507473356764,
+   "test_recall_macro": 0.9363964177658716,
+   "test_f1_macro": 0.9359144625691528,
+   "test_f1_weighted": 0.9383216586589808,
+   "notes": "Cây trên không gian LSA",
+   "features_short": "SVD-150 + Morph + Merchant"
+  },
+  {
+   "exp_id": "E08",
+   "date": "2026-11-07",
+   "task": "Classification",
+   "model": "HistGradientBoosting (thay XGBoost)",
+   "features": "SVD-150 (Hybrid TF-IDF) + Morph + Merchant prior",
+   "params": "{\"svd\": 150, \"max_iter\": 300, \"learning_rate\": 0.1, \"max_leaf_nodes\": 31}",
+   "split": "Stratified 80/20",
+   "n_train": 28248,
+   "n_test": 7063,
+   "cv_folds": 5.0,
+   "cv_accuracy_mean": 0.9769187122162744,
+   "cv_f1_macro_mean": 0.976575128052047,
+   "cv_f1_macro_std": 0.0019772323617973,
+   "cv_time_s": 287.90989804267883,
+   "train_time_s": 70.09766983985901,
+   "infer_ms_per_1k": 212.98840044916275,
+   "test_accuracy": 0.9796120628628062,
+   "test_precision_macro": 0.9801063935228462,
+   "test_recall_macro": 0.978607207291863,
+   "test_f1_macro": 0.9792745821019008,
+   "test_f1_weighted": 0.979648238652954,
+   "notes": "Gradient boosting (thay LightGBM/XGBoost)",
+   "features_short": "SVD-150 + Morph + Merchant"
+  },
+  {
+   "exp_id": "E09",
+   "date": "2026-11-07",
+   "task": "Classification",
+   "model": "Random Forest",
+   "features": "SVD-150 (Hybrid TF-IDF) + Morph + Merchant prior",
+   "params": "{\"svd\": 150, \"n_estimators\": 300}",
+   "split": "Stratified 80/20",
+   "n_train": 28248,
+   "n_test": 7063,
+   "cv_folds": 5.0,
+   "cv_accuracy_mean": 0.9708298719955132,
+   "cv_f1_macro_mean": 0.970014955495002,
+   "cv_f1_macro_std": 0.0016337749914788,
+   "cv_time_s": 260.0887498855591,
+   "train_time_s": 71.75788903236389,
+   "infer_ms_per_1k": 207.36748750598335,
+   "test_accuracy": 0.9738071640945772,
+   "test_precision_macro": 0.9749545081988064,
+   "test_recall_macro": 0.9718204583064832,
+   "test_f1_macro": 0.9732439591002948,
+   "test_f1_weighted": 0.9738207914107564,
+   "notes": "Ensemble bagging",
+   "features_short": "SVD-150 + Morph + Merchant"
+  }
+ ],
+ "ablation": [
+  {
+   "name": "Word TF-IDF (1,2)",
+   "f1": 0.9679092360241078,
+   "delta": "–",
+   "fridge_err": 84,
+   "total_err": 234
+  },
+  {
+   "name": "+ Char_wb TF-IDF (3,5)",
+   "f1": 0.9916710954299648,
+   "delta": "+2,38 điểm %",
+   "fridge_err": 27,
+   "total_err": 55
+  },
+  {
+   "name": "+ Morph(5) + Merchant prior(10)",
+   "f1": 0.9919708880384178,
+   "delta": "+2,41 điểm %",
+   "fridge_err": 27,
+   "total_err": 53
+  }
+ ],
+ "group": [
+  {
+   "exp_id": "E01-G",
+   "model": "Multinomial Naive Bayes",
+   "f1_strat": 0.9662830743394496,
+   "f1_group": 0.9413609742299862,
+   "delta": "-2,49 điểm %",
+   "n_test": 7154
+  },
+  {
+   "exp_id": "E04-G",
+   "model": "LinearSVC (SVM)",
+   "f1_strat": 0.9679092360241078,
+   "f1_group": 0.955618203995973,
+   "delta": "-1,23 điểm %",
+   "n_test": 7154
+  },
+  {
+   "exp_id": "E06-G",
+   "model": "LinearSVC (SVM)",
+   "f1_strat": 0.9919708880384178,
+   "f1_group": 0.9868214383463932,
+   "delta": "-0,51 điểm %",
+   "n_test": 7154
+  },
+  {
+   "exp_id": "E08-G",
+   "model": "HistGradientBoosting (thay XGBoost)",
+   "f1_strat": 0.9792745821019008,
+   "f1_group": 0.9690142834253204,
+   "delta": "-1,03 điểm %",
+   "n_test": 7154
+  }
+ ],
+ "top_conf": [
+  [
+   "Fridges",
+   "Fridge Freezers",
+   8
+  ],
+  [
+   "Freezers",
+   "Fridges",
+   8
+  ],
+  [
+   "Fridges",
+   "Freezers",
+   5
+  ],
+  [
+   "Fridge Freezers",
+   "Fridges",
+   3
+  ],
+  [
+   "Digital Cameras",
+   "Mobile Phones",
+   2
+  ],
+  [
+   "Freezers",
+   "Dishwashers",
+   2
+  ],
+  [
+   "TVs",
+   "Mobile Phones",
+   2
+  ],
+  [
+   "Fridge Freezers",
+   "Washing Machines",
+   2
+  ]
+ ],
+ "clu": [
+  {
+   "exp_id": "C01",
+   "date": "2026-11-07",
+   "task": "Clustering",
+   "model": "KMeans",
+   "features": "Word TF-IDF(1,2) -> SVD-50 -> L2",
+   "params": "{\"K\": 10, \"n_init\": 10, \"svd\": 50}",
+   "split": "Toàn bộ 35.311 mẫu (không dùng nhãn khi huấn luyện)",
+   "n_train": 35311,
+   "n_test": 0,
+   "silhouette_cosine": 0.3016820669038937,
+   "davies_bouldin": 2.607596195621765,
+   "ari_vs_category": 0.6229551874853975,
+   "nmi_vs_category": 0.7318251931951658,
+   "v_measure_vs_category": 0.7318251931951659,
+   "train_time_s": 7.018089294433594,
+   "notes": "Baseline phân cụm vĩ mô (Proposal: K-Means K=10)",
+   "space": "SVD-50 + L2"
+  },
+  {
+   "exp_id": "C02",
+   "date": "2026-11-07",
+   "task": "Clustering",
+   "model": "KMeans",
+   "features": "Word TF-IDF(1,2) -> SVD-100 -> L2",
+   "params": "{\"K\": 10, \"n_init\": 10, \"svd\": 100}",
+   "split": "Toàn bộ 35.311 mẫu (không dùng nhãn khi huấn luyện)",
+   "n_train": 35311,
+   "n_test": 0,
+   "silhouette_cosine": 0.1934265774018543,
+   "davies_bouldin": 3.138918395220116,
+   "ari_vs_category": 0.5033999276095351,
+   "nmi_vs_category": 0.6915784700914626,
+   "v_measure_vs_category": 0.6915784700914627,
+   "train_time_s": 10.949206352233888,
+   "notes": "Baseline phân cụm vĩ mô (Proposal: K-Means K=10)",
+   "space": "SVD-100 + L2"
+  },
+  {
+   "exp_id": "C03",
+   "date": "2026-11-07",
+   "task": "Clustering",
+   "model": "KMeans",
+   "features": "Word TF-IDF(1,2) -> SVD-150 -> L2",
+   "params": "{\"K\": 10, \"n_init\": 10, \"svd\": 150}",
+   "split": "Toàn bộ 35.311 mẫu (không dùng nhãn khi huấn luyện)",
+   "n_train": 35311,
+   "n_test": 0,
+   "silhouette_cosine": 0.1545869824448588,
+   "davies_bouldin": 3.2570245979986,
+   "ari_vs_category": 0.4292817830724501,
+   "nmi_vs_category": 0.669244583346262,
+   "v_measure_vs_category": 0.6692445833462619,
+   "train_time_s": 13.28510856628418,
+   "notes": "Baseline phân cụm vĩ mô (Proposal: K-Means K=10)",
+   "space": "SVD-150 + L2"
+  },
+  {
+   "exp_id": "C04",
+   "date": "2026-11-07",
+   "task": "Clustering",
+   "model": "MiniBatchKMeans",
+   "features": "Word TF-IDF(1,2) -> SVD-100 -> L2",
+   "params": "{\"K\": 10, \"n_init\": 10, \"svd\": 100}",
+   "split": "Toàn bộ 35.311 mẫu (không dùng nhãn khi huấn luyện)",
+   "n_train": 35311,
+   "n_test": 0,
+   "silhouette_cosine": 0.179643205097735,
+   "davies_bouldin": 3.1341656190854,
+   "ari_vs_category": 0.5449516391783692,
+   "nmi_vs_category": 0.7056940362202965,
+   "v_measure_vs_category": 0.7056940362202965,
+   "train_time_s": 7.562378168106079,
+   "notes": "Baseline phân cụm vĩ mô (Proposal: K-Means K=10)",
+   "space": "SVD-100 + L2"
+  }
+ ],
+ "members": [
+  {
+   "name": "Huỳnh Quốc Danh",
+   "mssv": "3124411050",
+   "role": "Nhóm trưởng",
+   "task_mid": "Điều phối; thiết kế pipeline TF-IDF/SVD chống rò rỉ; huấn luyện LinearSVC, Logistic, Gradient Boosting; tổng hợp báo cáo",
+   "done": "Thiết kế kiến trúc pipeline (ColumnTransformer + Pipeline), cài đặt MerchantPrior; chạy E03–E06, E08 và 4 thí nghiệm Group split; tổng hợp experiment log, viết báo cáo",
+   "files": "src/common.py, src/train_baselines.py, results/experiment_log.xlsx, báo cáo .docx",
+   "share": "25%"
+  },
+  {
+   "name": "Huỳnh Tấn Lộc",
+   "mssv": "3124411158",
+   "role": "Thành viên",
+   "task_mid": "EDA (phân phối lớp, độ dài tiêu đề, Chi-square n-gram); tiền xử lý văn bản và đặc trưng hình thái học; baseline Naive Bayes",
+   "done": "Viết hàm clean_title, morph_features; EDA mục 4.1–4.3 (biểu đồ eda_01–eda_05); chạy baseline Naive Bayes (E01)",
+   "files": "src/eda.py, notebooks/01_EDA.ipynb, figures/eda_01…05",
+   "share": "25%"
+  },
+  {
+   "name": "Nguyễn Vĩnh Thịnh",
+   "mssv": "3124411292",
+   "role": "Thành viên",
+   "task_mid": "EDA merchant & cluster; baseline phân cụm K-Means; huấn luyện cây quyết định/Random Forest; slide",
+   "done": "EDA mục 4.4 (eda_06–eda_08); baseline K-Means C01–C04, Elbow/Silhouette; chạy E02, E07, E09; làm slide giữa kỳ",
+   "files": "src/cluster_baseline.py, notebooks/03_Clustering_Baseline.ipynb, slide .pptx",
+   "share": "25%"
+  },
+  {
+   "name": "Mai Tấn Thiện Nhân",
+   "mssv": "3124411196",
+   "role": "Thành viên",
+   "task_mid": "Thu thập/kiểm tra dữ liệu UCI; trích xuất Hybrid TF-IDF; đánh giá (confusion matrix, per-class F1, phân tích lỗi)",
+   "done": "Tải và kiểm tra chất lượng dữ liệu (trùng lặp, nhãn mâu thuẫn); cấu hình Hybrid TF-IDF; phân tích lỗi mục 6.3 (confusion matrix, top nhầm lẫn, per-class F1)",
+   "files": "data/, notebooks/02_Classification_Baselines.ipynb, results/misclassified_*.csv",
+   "share": "25%"
+  }
+ ],
+ "timeline": [
+  {
+   "week": "1",
+   "task": "Khảo sát bài toán, kiểm tra dữ liệu, hoàn thiện Proposal",
+   "who": "Cả nhóm",
+   "status": "Hoàn thành"
+  },
+  {
+   "week": "2",
+   "task": "EDA: 10 ngành hàng, 306 merchants, độ dài tiêu đề, n-gram",
+   "who": "Lộc, Thịnh",
+   "status": "Hoàn thành"
+  },
+  {
+   "week": "3",
+   "task": "Pipeline tiền xử lý, Hybrid TF-IDF, đặc trưng hình thái, SVD",
+   "who": "Nhân, Danh",
+   "status": "Hoàn thành"
+  },
+  {
+   "week": "4",
+   "task": "Huấn luyện & so sánh mô hình phân loại (baseline)",
+   "who": "Nhân, Thịnh, Danh",
+   "status": "Hoàn thành bước baseline; còn tinh chỉnh siêu tham số"
+  },
+  {
+   "week": "5",
+   "task": "Phân cụm (K-Means, Agglomerative, DBSCAN), t-SNE, Web Demo",
+   "who": "Lộc, Danh, Thịnh",
+   "status": "Mới có baseline K-Means"
+  },
+  {
+   "week": "6",
+   "task": "Phân tích lỗi, báo cáo cuối kỳ, slide",
+   "who": "Cả nhóm",
+   "status": "Chưa thực hiện"
+  }
+ ],
+ "attributes": [
+  [
+   "Product ID",
+   "Integer",
+   "Định danh (loại bỏ)",
+   "35.311 giá trị duy nhất"
+  ],
+  [
+   "Product Title",
+   "Text",
+   "Đặc trưng chính (Input)",
+   "TB 8.67 từ, 52.98 ký tự; 87.9% có mã chữ-số"
+  ],
+  [
+   "Merchant ID",
+   "Integer (định danh)",
+   "Đặc trưng phụ (Input)",
+   "306 merchant"
+  ],
+  [
+   "Cluster ID",
+   "Integer",
+   "Nhãn đối chiếu phân cụm; nhóm cho Group split",
+   "13.233 cụm"
+  ],
+  [
+   "Cluster Label",
+   "Text",
+   "Tên chuẩn của cụm (không dùng làm đặc trưng)",
+   "13.233 nhãn"
+  ],
+  [
+   "Category ID",
+   "Integer",
+   "Biến mục tiêu (dạng mã)",
+   "10 giá trị (2612–2623)"
+  ],
+  [
+   "Category Label",
+   "Categorical",
+   "Biến mục tiêu",
+   "10 lớp (Hình 1)"
+  ]
+ ],
+ "data_stats": [
+  [
+   "Số mẫu / số cột",
+   "35.311 / 7"
+  ],
+  [
+   "Số ngành hàng (lớp)",
+   "10"
+  ],
+  [
+   "Số merchant",
+   "306"
+  ],
+  [
+   "Số cụm thực thể (Cluster ID)",
+   "13.233"
+  ],
+  [
+   "Giá trị khuyết",
+   "0"
+  ],
+  [
+   "Tiêu đề trùng lặp (sau lowercase)",
+   "4.318"
+  ],
+  [
+   "Bản ghi trùng (title, merchant, category)",
+   "1.255"
+  ],
+  [
+   "Tiêu đề trùng nhưng khác nhãn ngành",
+   "2"
+  ],
+  [
+   "Tỷ lệ lớp lớn nhất / nhỏ nhất",
+   "2.49 (Fridge Freezers / Freezers)"
+  ],
+  [
+   "Số từ / tiêu đề: TB – trung vị – min – max",
+   "8.67 – 8 – 1 – 37"
+  ],
+  [
+   "Cụm chỉ có 1 offer",
+   "5.374"
+  ],
+  [
+   "Kích thước cụm: TB – trung vị – max",
+   "2.67 – 2 – 27"
+  ],
+  [
+   "Merchant chỉ bán 1 ngành",
+   "139 / 306"
+  ],
+  [
+   "Tỷ trọng offer của 20 merchant lớn nhất",
+   "58.07%"
+  ]
+ ],
+ "eda": {
+  "n_rows": 35311,
+  "n_cols": 7,
+  "n_categories": 10,
+  "n_merchants": 306,
+  "n_clusters": 13233,
+  "missing_total": 0,
+  "dup_rows": 1255,
+  "dup_titles": 4318,
+  "singleton_clusters": 5374,
+  "titles_with_conflicting_labels": 2,
+  "imbalance_ratio": 2.49,
+  "words_mean": 8.67,
+  "words_median": 8.0,
+  "words_min": 1,
+  "words_max": 37,
+  "chars_mean": 52.98,
+  "pct_titles_with_alnum": 87.9,
+  "merchant_offers_median": 11.0,
+  "merchant_offers_max": 2547,
+  "top20_merchant_share_pct": 58.07,
+  "merchants_single_category": 139,
+  "merchant_purity_weighted": 0.4317,
+  "cluster_size_mean": 2.67,
+  "cluster_size_median": 2.0,
+  "cluster_size_max": 27,
+  "pct_titles_without_category_keyword": 18.7
+ },
+ "class_dist": [
+  [
+   "Fridge Freezers",
+   5501,
+   15.58
+  ],
+  [
+   "Mobile Phones",
+   4081,
+   11.56
+  ],
+  [
+   "Washing Machines",
+   4044,
+   11.45
+  ],
+  [
+   "CPUs",
+   3862,
+   10.94
+  ],
+  [
+   "Fridges",
+   3584,
+   10.15
+  ],
+  [
+   "TVs",
+   3564,
+   10.09
+  ],
+  [
+   "Dishwashers",
+   3424,
+   9.7
+  ],
+  [
+   "Digital Cameras",
+   2697,
+   7.64
+  ],
+  [
+   "Microwaves",
+   2342,
+   6.63
+  ],
+  [
+   "Freezers",
+   2212,
+   6.26
+  ]
+ ]
+}

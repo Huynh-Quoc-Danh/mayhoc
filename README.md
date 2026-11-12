@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Nhóm 06 – Product Classification and Clustering
 
 Môn Máy học – Trường Đại học Sài Gòn. Đề tài: phân loại đa lớp (10 ngành hàng) và phân cụm sản phẩm thương mại điện tử trên bộ dữ liệu PriceRunner (UCI #837).
@@ -55,3 +56,7 @@ print(m.predict(X))
 - Xuất HTML nhật ký chạy notebook: `python scripts/export_notebook_html.py notebooks/<nb>.ipynb <ten>`
 - Nguồn gốc hình: `figures/FIGURE_INDEX.csv` (sinh bởi `src/figlog.save_fig`)
 - GitHub: `docs/HUONG_DAN_GIT.md`; ôn vấn đáp: `docs/CAU_HOI_ON_TAP.md`
+=======
+# mayhoc
+May hoc
+>>>>>>> origin/main
