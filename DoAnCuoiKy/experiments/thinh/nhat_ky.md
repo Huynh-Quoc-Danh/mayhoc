@@ -33,3 +33,29 @@ Ngày 12/11
 - **Kết quả chính:** NMI 0.703 / 0.651 / 0.685; ARI 0.564 / 0.455 / 0.514; Silhouette 0.294 / 0.268 / 0.305 (K=10 / 8 / 12).
 - **Nhận xét:** K=10 tốt nhất vì bằng đúng số ngành. Silhouette tăng theo K (cụm nhỏ thì chặt hơn) nên không dùng để chọn K, phải dựa vào NMI/ARI. NMI thấp hơn giữa kỳ (0.73) do TF-IDF trong notebook thiếu min_df=2, sublinear_tf=True và token_pattern giữ mã model.
 - **Ngày mai:** sửa TF-IDF giống bản giữa kỳ, quét K từ 6 đến 20, thử SVD 100 và 150.
+# Nhật ký thí nghiệm - Nguyễn Vĩnh Thịnh
+## Ngày 13/11/2026
+
+### 1. Công việc đã thực hiện (Run ID & Tasks)
+- **Mở môi trường và cập nhật code:** Chuyển sang nhánh `thinh`, pull code mới nhất và kích hoạt môi trường ảo Python thành công.
+- **Sửa lỗi TF-IDF trong notebook 07:** 
+  - Bổ sung tham số `token_pattern=r"(?u)\b[\w\-\.\+]+\b"` vào `TfidfVectorizer` trong notebook `07_Thinh_PhanCum.ipynb` để giữ nguyên định dạng các mã model (như `lwf28441w`, `5.5`, `a+`).
+  - Đính chính nhận xét ngày 12/11: Khác biệt duy nhất với bản giữa kỳ là thiếu `token_pattern`.
+- **Chạy kiểm tra và quét K-Means:** 
+  - Chạy lại mô hình với $K=10$ để đối chiếu.
+  - Thực hiện quét vòng lặp K từ 6 đến 20 (bước nhảy 2) với SVD-50 (`thinh_20261113_...`).
+- **Trực quan hóa và lưu kết quả:** 
+  - Vẽ đồ thị biểu diễn các chỉ số Silhouette, ARI, và NMI theo các giá trị $K$.
+  - Lưu hình ảnh vào thư mục `figures\thinh_kmeans_quet_K.png` và cập nhật cột ý nghĩa vào `figures\FIGURE_INDEX.csv`.
+- **Tổng kết & Báo cáo:** Cập nhật nhật ký thí nghiệm lên Google Sheets, xuất file HTML báo cáo (`07_Thinh_PhanCum_20261113.html`), thực hiện git commit/push và tạo Pull Request lên GitHub.
+
+### 2. Kết quả chính
+- **Phục hồi chỉ số NMI:** Sau khi sửa xong `token_pattern` cho TF-IDF, giá trị NMI tại $K=10$ đã tăng lên và đạt đúng mức **`0.7318`**, khôi phục chính xác kết quả của bản giữa kỳ.
+- **Xác định K tối ưu:** Qua biểu đồ quét $K$ từ 6 đến 20, $K=10$ là giá trị tối ưu nhất khi đạt đỉnh NMI (`0.7318`) và ARI (`0.622`).
+
+### 3. Nhận xét & Rút ra
+- **Động thái của các chỉ số:** Chỉ số NMI và ARI đạt đỉnh ở khoảng $K=10$ rồi giảm dần khi $K$ lớn hơn do hiện tượng phân rã cụm quá mức (over-segmentation) so với nhãn gốc. Ngược lại, chỉ số Silhouette tiếp tục tăng dần khi $K$ lớn (đạt cao nhất ở $K=20$), do đặc trưng không gian văn bản thưa thớt ưa chuộng các cụm nhỏ gọn về mặt khoảng cách hình học.
+- **Quyết định:** Khẳng định lựa chọn $K=10$ làm tham số chuẩn cho các bước phân cụm tiếp theo.
+
+### 4. Kế hoạch ngày mai
+- Tiếp tục thực hiện các bước phân cụm nâng cao tiếp theo theo phân công của nhóm.
