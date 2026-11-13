@@ -34,6 +34,17 @@ def _git_commit() -> str:
         return "chua_co_git"
 
 
+def _ensure_trailing_newline(path):
+    """File CSV tải về từ Google Sheets thường KHÔNG có ký tự xuống dòng ở cuối.
+    Nếu ghi nối tiếp ngay, dòng mới sẽ dính vào dòng cuối cũ -> hỏng file.
+    Hàm này thêm '\\n' vào cuối file nếu còn thiếu."""
+    if path.exists() and path.stat().st_size > 0:
+        with open(path, "rb+") as f:
+            f.seek(-1, 2)
+            if f.read(1) not in (b"\n", b"\r"):
+                f.write(b"\r\n")
+
+
 def log_run(member: str, config: dict, results: dict, n_train: int, n_test: int, exp_name: str = "") -> str:
     folder = ROOT / "experiments" / member
     (folder / "runs").mkdir(parents=True, exist_ok=True)
@@ -47,6 +58,7 @@ def log_run(member: str, config: dict, results: dict, n_train: int, n_test: int,
     row.update({k: round(v, 6) for k, v in results.items() if k in COLUMNS})
     path = folder / "experiment_log.csv"
     new = not path.exists()
+    _ensure_trailing_newline(path)
     with open(path, "a", newline="", encoding="utf-8-sig") as f:
         w = csv.DictWriter(f, fieldnames=COLUMNS)
         if new:
@@ -77,9 +89,14 @@ def log_generic(member: str, log_name: str, row: dict) -> str:
             rows = list(csv.DictReader(open(path, encoding="utf-8-sig")))
             with open(path, "w", newline="", encoding="utf-8-sig") as f:
                 w = csv.DictWriter(f, fieldnames=cols); w.writeheader(); w.writerows(rows)
+    _ensure_trailing_newline(path)
     with open(path, "a", newline="", encoding="utf-8-sig") as f:
         w = csv.DictWriter(f, fieldnames=cols)
         if not path.exists() or path.stat().st_size == 0:
             w.writeheader()
         w.writerow(full)
+    # Lưu bản JSON gốc (số liệu chính xác) để khôi phục nếu file CSV bị sửa hỏng
+    (folder / "runs").mkdir(exist_ok=True)
+    json.dump(full, open(folder / "runs" / f"{run_id}.json", "w", encoding="utf-8"), ensure_ascii=False,
+              indent=1, default=str)
     return run_id
