@@ -4,30 +4,27 @@
 
 | Ngày | Đã làm (run_id / commit) | Kết quả chính | Nhận xét – rút ra – ngày mai làm gì |
 |---|---|---|---|
-| 12/11 | Cài môi trường, tạo nhánh `nhan`. Chạy `tai_lap_E02`, `dt_depth50`, `dt_leaf3`, `xgb_lan_dau` (run_id xem trong experiment_log.csv) | E02 tái lập = **0.9408** (khớp giữa kỳ). depth50 = 0.9179, leaf3 = 0.9322. XGBoost (SVD 100, 200 cây) = **0.9771**, thấp hơn HGB E08 (0.9793) khoảng 0,2 điểm | Giới hạn cây đơn đều làm kém đi vì cây trên TF-IDF cần rất sâu. XGBoost hơn cây đơn 3,6 điểm. Gặp lỗi pandas 3 → cài `pandas<3`. Ngày mai: tinh chỉnh XGBoost (n_estimators, max_depth, learning_rate, số chiều SVD). |
+| 12/11 | Cài môi trường, tạo nhánh nhan. Chạy tai_lap_E02 (nhan_20261112_141200), dt_depth50 (nhan_20261112_153041), dt_leaf3 (nhan_20261112_153114), xgb_lan_dau (nhan_20261112_153316) | E02 chạy lại ra 0.9408, đúng giữa kỳ. depth 50 ra 0.918, leaf 3 ra 0.932. XGBoost ra 0.9771 | Giới hạn cây đều làm tệ hơn. XGBoost hơn cây đơn nhiều. Bị lỗi pandas 3 nên phải cài lại pandas bản 2. Mai thử Random Forest. |
+| 13/11 | Notebook 06: dt_d20 (nhan_20261113_212725), dt_d100 (nhan_20261113_212916), dt_dNone (nhan_20261113_213047), rf_100 (nhan_20261113_214140), rf_300 (nhan_20261113_214408). Dùng đặc trưng svd 150 | Cây: depth 20 ra 0.932, depth 100 và None ra 0.9406. Random Forest: 100 cây ra 0.9716, 300 cây ra 0.9732 | depth 100 với None giống nhau vì cây chỉ sâu khoảng 37 tầng. Random Forest hơn cây đơn khoảng 3 điểm, 300 cây không hơn 100 bao nhiêu. Mai chỉnh XGBoost và thử max_features cho Random Forest. |
 
-## Câu hỏi tự trả lời (12/11)
+## Câu hỏi tự trả lời
 
-**1. Giới hạn độ sâu làm cây tốt hơn hay kém hơn? Vì sao?**
+**12/11 – Giới hạn độ sâu làm cây tốt hơn hay kém hơn? Vì sao?**
 
-Kém hơn. Cây mặc định đạt Macro-F1 0.9408; `max_depth=50` còn 0.9179, `min_samples_leaf=3` còn 0.9322.
-Cây mặc định sâu tới 241 tầng với 1394 lá, độ chính xác trên train 0.992, tức là nó học gần như thuộc lòng.
-Nhưng khi cắt xuống 50 tầng, độ chính xác trên train chỉ còn 0.938: cây bị *thiếu khớp* (underfit) chứ không phải bớt quá khớp.
-Lý do là dữ liệu là TF-IDF rất thưa (~31.000 đặc trưng từ/cụm từ). Mỗi nút chỉ hỏi "tiêu đề có chứa từ X không?",
-và mỗi từ chỉ xuất hiện ở một phần nhỏ mẫu, nên cây phải hỏi rất nhiều câu nối tiếp nhau mới tách hết được 10 lớp.
-Chặn độ sâu thì nhiều mẫu rơi vào nhánh "không chứa từ nào trong các từ đã hỏi" và bị gán sai
-(ví dụ Washing Machines: precision 0.996 nhưng recall tụt còn 0.878).
-`min_samples_leaf=3` ít hại hơn, nhưng lại xóa các lá nhỏ chứa từ hiếm, nên lớp Freezers giảm rõ nhất (0.909 → 0.882).
+Kém hơn. Cây mặc định được 0.9408, đặt max_depth 50 còn 0.918, min_samples_leaf 3 còn 0.932. Lúc đầu em nghĩ giới hạn sẽ đỡ học thuộc, nhưng xem điểm trên tập train thì depth 50 chỉ còn khoảng 0.94, tức là cây chưa học đủ. Đặc trưng word có hơn 30 nghìn cột, mỗi lần tách cây chỉ hỏi tiêu đề có chữ nào đó hay không, nên phải hỏi rất nhiều lần (cây sâu tới hơn 200 tầng) mới phân loại được. Cắt ngắn thì nhiều mẫu bị đoán sai.
 
-**2. Vì sao cây đơn kém hơn SVM trên dữ liệu văn bản?**
+**12/11 – Vì sao cây đơn kém hơn SVM trên dữ liệu văn bản?**
 
-- SVM tuyến tính **cộng dồn bằng chứng từ tất cả các từ cùng lúc**: mỗi từ có một trọng số, tiêu đề có nhiều từ gợi ý cùng một lớp thì điểm lớp đó cao. Cây chỉ đi theo một đường, mỗi bước xét một từ, nên bỏ qua phần lớn thông tin còn lại trong tiêu đề.
-- Dữ liệu văn bản nhiều chiều và thưa: SVM xử lý tốt (dữ liệu gần như tách tuyến tính được), còn cây phải mọc rất sâu, dễ quá khớp và rất nhạy với vài từ hiếm (phương sai cao).
-- Các lớp dễ nhầm (Fridges / Freezers / Fridge Freezers) chia sẻ nhiều từ chung; phân biệt chúng cần cân nhắc nhiều từ cùng lúc, đúng thế mạnh của mô hình tuyến tính.
-- Vì vậy hướng cải thiện cho mô hình cây là **ensemble** (Random Forest, Gradient Boosting/XGBoost) và nén văn bản bằng SVD, chứ không phải chỉnh một cây đơn.
+SVM xét tất cả các chữ trong tiêu đề cùng lúc, chữ nào cũng có trọng số rồi cộng lại. Cây thì đi từng bước, mỗi bước chỉ xét 1 chữ nên bỏ qua nhiều thông tin. Dữ liệu chữ có rất nhiều cột mà mỗi tiêu đề chỉ có vài chữ, cây dễ bị học thuộc mấy chữ hiếm. Mấy lớp tủ lạnh lại có nhiều chữ giống nhau nên cần xét nhiều chữ một lúc mới phân biệt được.
 
-**3. XGBoost so với HistGradientBoosting giữa kỳ?**
+**12/11 – XGBoost so với HistGradientBoosting giữa kỳ?**
 
-XGBoost lần đầu đạt Macro-F1 0.9771, hơn cây đơn 3,6 điểm nhưng thấp hơn HGB giữa kỳ (E08: 0.9793) khoảng 0,2 điểm.
-Hai mô hình cùng là boosting (nhiều cây nông, cây sau sửa lỗi cây trước) nên kết quả gần nhau; chênh lệch nhỏ có thể do
-số cây (200 so với 300) và việc nén văn bản còn 100 chiều SVD làm mất bớt thông tin. Bước tiếp theo là tinh chỉnh tham số XGBoost.
+XGBoost được 0.9771, thua HGB giữa kỳ (0.9793) một chút. Hai cái đều là boosting nên ra gần nhau. Em chạy XGBoost 200 cây và nén còn 100 chiều nên chắc bị mất bớt thông tin.
+
+**13/11 – Giới hạn độ sâu có giúp cây tránh quá khớp không?**
+
+Không giúp. Với svd 150 chiều, depth 20 còn tệ hơn (0.932) so với không giới hạn (0.9406). depth 100 và None ra giống hệt vì cây tự mọc chỉ sâu khoảng 37 tầng.
+
+**13/11 – Ghép nhiều cây (Random Forest) cải thiện bao nhiêu so với một cây?**
+
+Khoảng 3 điểm: từ 0.9406 lên 0.9716 (100 cây) và 0.9732 (300 cây). Mấy lớp tủ lạnh lên nhiều nhất, Fridges với Freezers từ khoảng 0.84-0.86 lên khoảng 0.93. Lý do là mỗi cây học trên một phần dữ liệu khác nhau rồi bỏ phiếu, cây sai thì cây khác bù.
