@@ -24,3 +24,12 @@
 - Mục 6: hình figures/loc_nb_alpha_lr_C.png.
 - **Kết luận:** NB + ngram (1,2) + min_df=1 + alpha=0.01, Macro-F1 = 0.980 (+0.014 so với giữa kỳ).
 - **Ngày mai:** kiểm tra lại bằng chia train/test theo cluster_id; thử alpha 0.001 và 0.003; chạy cross-validation cho cấu hình tốt nhất.
+
+## 13/11/2026 – Lộc
+- Chạy lại EDA (`python src/eda.py`) và giải thích số liệu trong notebook 04 mục 1 (nguồn: results/eda_summary.json).
+- loc_20261113_144358 – cnb_alpha01: ComplementNB word, F1 = 0.9674 (≈ MultinomialNB 0.9663).
+- loc_20261113_144410 – nb_hybrid: NB word + n-gram ký tự, F1 = **0.9851** (+1,9 điểm).
+- loc_20261113_144424 – lr_hybrid: LR hybrid C=10, F1 = **0.9890** (+2,2 điểm), tốt nhất của Lộc.
+- **Nhận xét:** NB và LR đều hưởng lợi từ n-gram ký tự gần bằng SVM (+2,45 điểm), khớp với EDA (87,9% tiêu đề có mã chữ-số, 18,7% không có từ khóa ngành). SVM hybrid của Danh vẫn tốt nhất (0.9924).
+- **Ghi chú cho nhóm:** cột test_f1_macro trong experiments/danh/experiment_log.csv đang bị nhân 1000 lần (967.909 thay vì 0.967909), có thể do lưu CSV bằng Excel.
+- **Ngày mai:** thử NB hybrid với alpha=0.01, min_df=1; quét C cho LR hybrid; kiểm tra bằng chia train/test theo cluster_id.
