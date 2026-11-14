@@ -11,12 +11,12 @@ thinh_20261113_214333,2026-11-13 21:43:33,56bd358*,kmeans,14,50,14,0.0,0.313434,
 thinh_20261113_214359,2026-11-13 21:43:59,56bd358*,kmeans,16,50,16,0.0,0.337726,0.545962,0.704062,"Nmi tiếp tục giảm Silhouette tăng do chia nhỏ cụm, nhưng NMI/ARI giảm chứng tỏ chất lượng không tăng.",,,
 thinh_20261113_214413,2026-11-13 21:44:13,56bd358*,kmeans,18,50,18,0.0,0.344808,0.551461,0.695845,"NMI ổn định ở mức Xu hướng tách biệt giữa Silhouette (ưa chuộng cụm nhỏ, nhiều) và NMI...",,,
 thinh_20261113_214431,2026-11-13 21:44:31,56bd358*,kmeans,20,50,20,0.0,0.34717,0.463338,0.660763,"NMI giảm sâu Xu hướng Việc tăng số cụm lớn không mang lại ý nghĩa cải thiện về mặt phân loại, khẳng định dứt khoát K=20 là mức quá khớp (overfitting) về số lượng cụm.",,,
-thinh_20261114_134423,2026-11-14 13:44:23,8220a64,kmeans,10,50,10,0.0,0.301682,0.622955,0.731825,,,,
-thinh_20261114_134557,2026-11-14 13:45:57,8220a64,minibatch_kmeans,10,50,10,0.0,0.268528,0.539534,0.670865,,,,
-thinh_20261114_134714,2026-11-14 13:47:14,8220a64,kmeans,10,100,10,0.0,0.193427,0.5034,0.691578,,,,
-thinh_20261114_134815,2026-11-14 13:48:15,8220a64,minibatch_kmeans,10,100,10,0.0,0.179643,0.544952,0.705694,,,,
-thinh_20261114_134916,2026-11-14 13:49:16,8220a64,kmeans,10,150,10,0.0,0.154587,0.429282,0.669245,,,,
-thinh_20261114_134953,2026-11-14 13:49:53,8220a64,minibatch_kmeans,10,150,10,0.0,0.1535,0.50259,0.653174,,,,
-thinh_20261114_135518,2026-11-14 13:55:18,8220a64,agglomerative,10,50,10,0.0,0.255738,0.406001,0.612562,,,ward,6000
-thinh_20261114_135525,2026-11-14 13:55:25,8220a64,agglomerative,10,50,10,0.0,0.257083,0.554307,0.653224,,,average,6000
-thinh_20261114_135540,2026-11-14 13:55:40,8220a64,agglomerative,10,50,10,0.0,0.059001,0.13323,0.247831,,,complete,6000
+thinh_20261114_134423,2026-11-14 13:44:23,8220a64,kmeans,10,50,10,0.0,0.301682,0.622955,0.731825,NMI đạt 0.7318, cao nhất trong các mức chiều SVD thử nghiệm,SVD 50 nén thông tin hiệu quả nhất, loại bỏ nhiễu tốt cho K-Means.
+thinh_20261114_134557,2026-11-14 13:45:57,8220a64,minibatch_kmeans,10,50,10,0.0,0.268528,0.539534,0.670865,Chỉ số xấp xỉ K-Means đầy đủ nhưng thời gian chạy nhanh hơn nhiều,MiniBatch là lựa chọn thay thế tốt khi cần tối ưu tốc độ trên dữ liệu lớn.
+thinh_20261114_134714,2026-11-14 13:47:14,8220a64,kmeans,10,100,10,0.0,0.193427,0.5034,0.691578,NMI giảm xuống 0.6916 so với mức 50 chiều,Tăng lên 100 chiều bắt đầu giữ lại nhiều nhiễu từ vựng ít quan trọng.
+thinh_20261114_134815,2026-11-14 13:48:15,8220a64,minibatch_kmeans,10,100,10,0.0,0.179643,0.544952,0.705694,Tương tự K-Means, NMI giảm khi tăng số chiều lên 100,Xác nhận xu hướng giảm chất lượng khi tăng chiều SVD trên dữ liệu này.
+thinh_20261114_134916,2026-11-14 13:49:16,8220a64,kmeans,10,150,10,0.0,0.154587,0.429282,0.669245,NMI tiếp tục giảm còn 0.6692,Không gian quá nhiều chiều làm loãng khoảng cách cụm, không nên dùng.
+thinh_20261114_134953,2026-11-14 13:49:53,8220a64,minibatch_kmeans,10,150,10,0.0,0.1535,0.50259,0.653174,NMI thấp nhất trong nhóm thử nghiệm MiniBatch,Chốt chọn SVD 50 làm chuẩn giảm chiều cho các bước tiếp theo.
+thinh_20261114_135518,2026-11-14 13:55:18,8220a64,agglomerative,10,50,10,0.0,0.255738,0.406001,0.612562,NMI đạt 0.6126, đứng thứ hai trong 3 kiểu liên kết.,Tạo cụm có kích thước khá đều nhưng kém hơn K-Means (0.7318).,ward,6000
+thinh_20261114_135525,2026-11-14 13:55:25,8220a64,agglomerative,10,50,10,0.0,0.257083,0.554307,0.653224,NMI đạt 0.6532, cao nhất trong nhóm Agglomerative,Liên kết trung bình chịu nhiễu tốt hơn ward và complete trên văn bản.,average,6000
+thinh_20261114_135540,2026-11-14 13:55:40,8220a64,agglomerative,10,50,10,0.0,0.059001,0.13323,0.247831,NMI rất thấp (0.2478), phân cụm kém hiệu quả,Rất nhạy cảm với điểm ngoại lai (outliers), không dùng cho bài toán này.,complete,6000

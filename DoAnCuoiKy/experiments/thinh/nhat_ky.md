@@ -1,6 +1,4 @@
-# Nhật ký làm việc – thinh
-
-Ngày 12/11
+# Nhật ký làm việc 12/11
 ## 1. Kết quả quét các giá trị K (K-Means)
 - **K = 8:** 
   - Silhouette: 0.2675
@@ -25,9 +23,7 @@ Ngày 12/11
 
 - **Chỉ số nào nên dùng để chọn K, vì sao?**
   - Nên dùng **NMI (Normalized Mutual Information)** làm chỉ số chính để chọn $K$ vì bài toán có sẵn nhãn ground-truth (nhãn ngành hàng), giúp đo lường chính xác mức độ khớp và khả năng khôi phục cấu trúc phân loại thực tế của dữ liệu văn bản. Kết hợp thêm **Silhouette** để kiểm tra độ tách rời về mặt hình học.
----
-
-## 3. Nhật ký ngày 12/11/2026
+### Nhật ký ngày 12/11/2026
 
 - **Đã làm:** chạy K-Means K=10, 8, 12 trên SVD-50 (run_id: thinh_20261112_184246, thinh_20261112_185129, thinh_20261112_185303); điền nhận xét vào cluster_log.csv; xuất HTML notebook 07 (runs/07_Thinh_20261112.html).
 - **Kết quả chính:** NMI 0.703 / 0.651 / 0.685; ARI 0.564 / 0.455 / 0.514; Silhouette 0.294 / 0.268 / 0.305 (K=10 / 8 / 12).
@@ -59,3 +55,8 @@ Ngày 12/11
 
 ### 4. Kế hoạch ngày mai
 - Tiếp tục thực hiện các bước phân cụm nâng cao tiếp theo theo phân công của nhóm.
+## Nhật ký ngày 14/11/2026
+- **Đã làm:** Đẩy notebook 07 và hình quét K còn thiếu của ngày 13/11 lên GitHub; chạy thực nghiệm so sánh số chiều SVD (50, 100, 150) giữa K-Means và MiniBatch K-Means (K=10); chạy thực nghiệm Agglomerative Clustering với 3 kiểu liên kết (ward, average, complete) trên mẫu 6.000 điểm.
+- **Kết quả chính:** Với K-Means, SVD 50 đạt NMI cao nhất (0.7318), giảm dần khi tăng chiều lên 100 (0.6916) và 150 (0.6692). MiniBatch K-Means cho tốc độ nhanh hơn với kết quả tương đương. Ở Agglomerative Clustering, liên kết `average` đạt NMI tốt nhất (0.6532), kế đến là `ward` (0.6126), còn `complete` thấp nhất (0.2478).
+- **Nhận xét:** Không gian giảm chiều SVD 50 giữ lại đặc trưng cô đọng nhất cho dữ liệu văn bản, việc tăng thêm chiều đưa thêm nhiễu làm giảm NMI. Thuật toán K-Means với SVD 50 vẫn vượt trội hoàn toàn so với Agglomerative Clustering trên tập dữ liệu này.
+- **Ngày mai:** Thử nghiệm thuật toán phân cụm dựa trên mật độ DBSCAN/HDBSCAN (Mục 3) để kiểm tra khả năng phát hiện cụm tự nhiên và lọc nhiễu.
