@@ -33,3 +33,11 @@
 - **Nhận xét:** NB và LR đều hưởng lợi từ n-gram ký tự gần bằng SVM (+2,45 điểm), khớp với EDA (87,9% tiêu đề có mã chữ-số, 18,7% không có từ khóa ngành). SVM hybrid của Danh vẫn tốt nhất (0.9924).
 - **Ghi chú cho nhóm:** cột test_f1_macro trong experiments/danh/experiment_log.csv đang bị nhân 1000 lần (967.909 thay vì 0.967909), có thể do lưu CSV bằng Excel.
 - **Ngày mai:** thử NB hybrid với alpha=0.01, min_df=1; quét C cho LR hybrid; kiểm tra bằng chia train/test theo cluster_id.
+
+## 14/11/2026 – Lộc
+- NB hybrid char(2,4): alpha 0.1 → 0.9851 (loc_20261114_174839), **0.03 → 0.9869** (loc_20261114_174908), 0.3 → 0.9799 (loc_20261114_174915).
+- LR hybrid char(2,4): C=10 → 0.9902 (loc_20261114_174953), C=30 → 0.9895 (loc_20261114_175352), **C=100 → 0.9909** (loc_20261114_175809).
+- CV 5-fold: NB alpha=0.03 → **0.9861 ± 0.0014** (loc_20261114_175845); LR C=100 → **0.9875 ± 0.0016** (loc_20261114_175918); SVM Danh → 0.9909 ± 0.0013 (danh_20261113_170944).
+- **Nhận xét:** SVM hơn LR ≈ 2 độ lệch chuẩn và hơn NB ≈ 3 độ lệch chuẩn → khác biệt thật. LR và NB chênh ≈ 1 độ lệch chuẩn → coi như ngang nhau. NB kém do giả định độc lập (n-gram ký tự chồng lấn bị đếm trùng); SVM hơn LR nhờ tối đa lề (hinge loss).
+- Hình: figures/loc_so_sanh_tuyen_tinh.png (notebook 04 mục 8).
+- **Ngày mai:** kiểm tra NB/LR với chia train/test theo cluster_id; thử alpha < 0.03 cho NB hybrid.
