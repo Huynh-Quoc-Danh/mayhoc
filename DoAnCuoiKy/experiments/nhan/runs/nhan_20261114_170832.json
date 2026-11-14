@@ -1,0 +1,35 @@
+{
+ "run_id": "nhan_20261114_170832",
+ "time": "2026-11-14 17:08:32",
+ "config": {
+  "model": "xgb",
+  "features": "svd",
+  "params": {
+   "n_estimators": 200,
+   "max_depth": 3,
+   "learning_rate": 0.1
+  },
+  "split": "strat",
+  "word_ngram": [
+   1,
+   2
+  ],
+  "char_ngram": [
+   3,
+   5
+  ],
+  "min_df": 2,
+  "svd": 100
+ },
+ "results": {
+  "train_time_s": 15.104378461837769,
+  "test_accuracy": 0.9685685969134928,
+  "test_precision_macro": 0.9702861527284377,
+  "test_recall_macro": 0.9678939105786941,
+  "test_f1_macro": 0.9689504149525051,
+  "test_f1_weighted": 0.9686540187483682,
+  "f1_Fridges": 0.9006802721088435,
+  "f1_Freezers": 0.9313154831199069,
+  "f1_Fridge_Freezers": 0.9414990859232175
+ }
+}
