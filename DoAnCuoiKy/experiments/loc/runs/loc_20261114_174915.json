@@ -1,0 +1,33 @@
+{
+ "run_id": "loc_20261114_174915",
+ "time": "2026-11-14 17:49:15",
+ "config": {
+  "model": "nb",
+  "features": "hybrid",
+  "params": {
+   "alpha": 0.3
+  },
+  "split": "strat",
+  "word_ngram": [
+   1,
+   2
+  ],
+  "char_ngram": [
+   2,
+   4
+  ],
+  "min_df": 2,
+  "svd": null
+ },
+ "results": {
+  "train_time_s": 1.2142350673675537,
+  "test_accuracy": 0.9803199773467365,
+  "test_precision_macro": 0.9830831863447674,
+  "test_recall_macro": 0.9774813971298709,
+  "test_f1_macro": 0.9798957694163131,
+  "test_f1_weighted": 0.9802932881978553,
+  "f1_Fridges": 0.9407760381211708,
+  "f1_Freezers": 0.9365269461077844,
+  "f1_Fridge_Freezers": 0.9648648648648649
+ }
+}
