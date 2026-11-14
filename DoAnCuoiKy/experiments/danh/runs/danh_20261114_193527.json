@@ -1,0 +1,33 @@
+{
+ "run_id": "danh_20261114_193527",
+ "time": "2026-11-14 19:35:27",
+ "config": {
+  "model": "svc",
+  "features": "hybrid",
+  "params": {
+   "C": 3.0
+  },
+  "split": "strat",
+  "word_ngram": [
+   1,
+   2
+  ],
+  "char_ngram": [
+   2,
+   4
+  ],
+  "min_df": 2,
+  "svd": null
+ },
+ "results": {
+  "train_time_s": 11.268625259399414,
+  "test_accuracy": 0.9933456038510547,
+  "test_precision_macro": 0.993142361804137,
+  "test_recall_macro": 0.9926493279528055,
+  "test_f1_macro": 0.992892871069966,
+  "test_f1_weighted": 0.9933430165624887,
+  "f1_Fridges": 0.98397212543554,
+  "f1_Freezers": 0.9761634506242906,
+  "f1_Fridge_Freezers": 0.9927272727272727
+ }
+}
