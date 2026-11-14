@@ -1,0 +1,15 @@
+{
+ "run_id": "thinh_20261114_112025",
+ "thoi_diem_chay": "2026-11-14 11:20:25",
+ "git_commit": "afb530a",
+ "algo": "kmeans",
+ "K": 12,
+ "svd": 50,
+ "n_clusters": 12,
+ "noise_pct": 0.0,
+ "silhouette": 0.305139,
+ "ari": 0.513581,
+ "nmi": 0.684837,
+ "nhan_xet": "",
+ "rut_ra": ""
+}
