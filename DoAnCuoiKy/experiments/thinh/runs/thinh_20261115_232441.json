@@ -1,0 +1,16 @@
+{
+ "run_id": "thinh_20261115_232441",
+ "thoi_diem_chay": "2026-11-15 23:24:41",
+ "git_commit": "e0a5c36",
+ "algo": "hdbscan",
+ "min_cluster_size": 200,
+ "svd": 50,
+ "n_sample": 6000,
+ "n_clusters": 3,
+ "noise_pct": 0.656667,
+ "silhouette": 0.304684,
+ "ari": 0.069053,
+ "nmi": 0.286968,
+ "nhan_xet": "",
+ "rut_ra": ""
+}

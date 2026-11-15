@@ -60,3 +60,8 @@
 - **Kết quả chính:** Với K-Means, SVD 50 đạt NMI cao nhất (0.7318), giảm dần khi tăng chiều lên 100 (0.6916) và 150 (0.6692). MiniBatch K-Means cho tốc độ nhanh hơn với kết quả tương đương. Ở Agglomerative Clustering, liên kết `average` đạt NMI tốt nhất (0.6532), kế đến là `ward` (0.6126), còn `complete` thấp nhất (0.2478).
 - **Nhận xét:** Không gian giảm chiều SVD 50 giữ lại đặc trưng cô đọng nhất cho dữ liệu văn bản, việc tăng thêm chiều đưa thêm nhiễu làm giảm NMI. Thuật toán K-Means với SVD 50 vẫn vượt trội hoàn toàn so với Agglomerative Clustering trên tập dữ liệu này.
 - **Ngày mai:** Thử nghiệm thuật toán phân cụm dựa trên mật độ DBSCAN/HDBSCAN (Mục 3) để kiểm tra khả năng phát hiện cụm tự nhiên và lọc nhiễu.
+## Nhật ký ngày 15/11/2026
+- **Đã làm:** Quét DBSCAN (eps, min_samples) và HDBSCAN (min_cluster_size), vẽ biểu đồ k-distance, vẽ biểu đồ so sánh tổng hợp các thuật toán phân cụm, sửa 4 nhận xét ngày 13/11 bằng script.
+- **Kết quả chính:** K-Means SVD 50 tốt nhất với NMI đạt 0.732; DBSCAN tối ưu đạt NMI 0.554; HDBSCAN tối ưu đạt NMI 0.533. Cả hai mô hình mật độ đều kém hơn K-Means do tỷ lệ nhiễu cao và mật độ không đồng đều.
+- **Nhận xét:** Các thuật toán dựa trên mật độ không phù hợp bằng K-Means trên tập dữ liệu văn bản này do đặc thù không gian vector thưa và phân bố phức tạp.
+- **Ngày mai:** Tiếp tục thực hiện t-SNE (mục 4) để trực quan hóa không gian giảm chiều.
