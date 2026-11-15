@@ -41,3 +41,11 @@
 - **Nhận xét:** SVM hơn LR ≈ 2 độ lệch chuẩn và hơn NB ≈ 3 độ lệch chuẩn → khác biệt thật. LR và NB chênh ≈ 1 độ lệch chuẩn → coi như ngang nhau. NB kém do giả định độc lập (n-gram ký tự chồng lấn bị đếm trùng); SVM hơn LR nhờ tối đa lề (hinge loss).
 - Hình: figures/loc_so_sanh_tuyen_tinh.png (notebook 04 mục 8).
 - **Ngày mai:** kiểm tra NB/LR với chia train/test theo cluster_id; thử alpha < 0.03 cho NB hybrid.
+
+## 15/11/2026 – Lộc
+- loc_20261115_142029 – LR C=100 balanced: F1 0.9889 (không cân bằng 0.9909) → balanced không giúp.
+- loc_20261115_142042/142049/142057 – ComplementNB alpha 0.03/0.1/0.3: 0.9857 / 0.9840 / 0.9817 → kém MultinomialNB (0.9869).
+- loc_20261115_142102 – NB Group split: 0.9819 (−0.50 điểm); loc_20261115_142112 – LR Group split: 0.9851 (−0.58 điểm); SVM Danh Group split 0.9875 (−0.54 điểm).
+- **Nhận xét:** dữ liệu chỉ lệch nhẹ nên cân bằng lớp và ComplementNB đều không có lợi. Chia theo sản phẩm làm cả 3 mô hình giảm khoảng 0.5 điểm, thứ hạng giữ nguyên: SVM > LR > NB; NB nhanh nhất.
+- Notebook 04 mục 9: bảng + kết luận. Sơ đồ tiền xử lý: docs/hinh_ve_tay/loc_so_do_tien_xu_ly.jpg.
+- **Ngày mai:** theo phân công của nhóm.
