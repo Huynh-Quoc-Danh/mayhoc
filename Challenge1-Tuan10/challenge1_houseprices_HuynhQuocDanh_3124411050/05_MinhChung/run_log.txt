@@ -1,0 +1,18 @@
+train (1460, 81)  test (1459, 80)
+Features: {'n_after_outlier': 1458, 'n_test': 1459, 'n_features_final': 351, 'n_skewed_fixed': 34, 'n_engineered': 22}
+Ridge              RMSE 0.1124 ± 0.0088  (0.2s)
+Lasso              RMSE 0.1101 ± 0.0075  (1.9s)
+ElasticNet         RMSE 0.1102 ± 0.0077  (1.5s)
+KernelRidge        RMSE 0.1165 ± 0.0057  (0.7s)
+SVR                RMSE 0.1104 ± 0.0110  (2.4s)
+RandomForest       RMSE 0.1305 ± 0.0080  (13.8s)
+GradientBoosting   RMSE 0.1118 ± 0.0091  (43.6s)
+HistGB             RMSE 0.1223 ± 0.0108  (34.2s)
+Stacking           RMSE 0.1072 ± 0.0097
+Blending (OOF)     RMSE 0.1076
+Done -> ../outputs
+0.1983  A. Baseline: LinearRegression, numeric only, raw target
+0.1407  B. + log1p target, full imputation, one-hot, Lasso
+0.1122  C. + outlier removal
+0.1099  D. + Box-Cox skew correction
+0.1101  E. + feature engineering (full pipeline)
