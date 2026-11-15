@@ -1,6 +1,0 @@
-config,cv_rmse_log
-"A. Baseline: LinearRegression, numeric only, raw target",0.19832740438837554
-"B. + log1p target, full imputation, one-hot, Lasso",0.14068140837503848
-C. + outlier removal,0.112216878200357
-D. + Box-Cox skew correction,0.10989962068400227
-E. + feature engineering (full pipeline),0.11006667302960123
