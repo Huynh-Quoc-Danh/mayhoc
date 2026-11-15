@@ -1,0 +1,100 @@
+{
+  "n_train": 1460,
+  "n_features_raw": 79,
+  "price_mean": 180921.19589041095,
+  "price_median": 163000.0,
+  "price_skew": 1.8828757597682129,
+  "price_kurt": 6.536281860064529,
+  "logprice_skew": 0.12134661989685329,
+  "top_corr": {
+    "OverallQual": 0.791,
+    "GrLivArea": 0.709,
+    "GarageCars": 0.64,
+    "GarageArea": 0.623,
+    "TotalBsmtSF": 0.614,
+    "1stFlrSF": 0.606,
+    "FullBath": 0.561,
+    "TotRmsAbvGrd": 0.534,
+    "YearBuilt": 0.523,
+    "YearRemodAdd": 0.507
+  },
+  "n_cols_missing": 19,
+  "top_missing": {
+    "PoolQC": 99.5,
+    "MiscFeature": 96.3,
+    "Alley": 93.8,
+    "Fence": 80.8,
+    "MasVnrType": 59.7,
+    "FireplaceQu": 47.3,
+    "LotFrontage": 17.7,
+    "GarageQual": 5.5
+  },
+  "n_outliers": 2,
+  "n_after_outlier": 1458,
+  "n_test": 1459,
+  "n_features_final": 351,
+  "n_skewed_fixed": 34,
+  "n_engineered": 22,
+  "lasso_nonzero": 112,
+  "results": {
+    "Ridge": {
+      "rmse_mean": 0.11235388472528003,
+      "rmse_std": 0.00878349651212762,
+      "time_s": 0.2
+    },
+    "Lasso": {
+      "rmse_mean": 0.11006667302960123,
+      "rmse_std": 0.007540902736873005,
+      "time_s": 1.9
+    },
+    "ElasticNet": {
+      "rmse_mean": 0.11019943730697182,
+      "rmse_std": 0.007709352226530054,
+      "time_s": 1.5
+    },
+    "KernelRidge": {
+      "rmse_mean": 0.116513229047716,
+      "rmse_std": 0.005743754324839946,
+      "time_s": 0.7
+    },
+    "SVR": {
+      "rmse_mean": 0.11038444996973389,
+      "rmse_std": 0.011012988422528918,
+      "time_s": 2.4
+    },
+    "RandomForest": {
+      "rmse_mean": 0.13045650742134468,
+      "rmse_std": 0.007960243752867717,
+      "time_s": 13.8
+    },
+    "GradientBoosting": {
+      "rmse_mean": 0.11181701942871596,
+      "rmse_std": 0.00909261874103501,
+      "time_s": 43.6
+    },
+    "HistGB": {
+      "rmse_mean": 0.12230238004212865,
+      "rmse_std": 0.010792723453113086,
+      "time_s": 34.2
+    },
+    "Stacking": {
+      "rmse_mean": 0.10721101123089802,
+      "rmse_std": 0.009665474332519334,
+      "time_s": 294.5
+    },
+    "Blending": {
+      "rmse_mean": 0.10756210908127971,
+      "rmse_std": null,
+      "time_s": null
+    }
+  },
+  "blend_weights": {
+    "Stacking": 0.3,
+    "Lasso": 0.15,
+    "ElasticNet": 0.1,
+    "KernelRidge": 0.1,
+    "SVR": 0.1,
+    "GradientBoosting": 0.15,
+    "HistGB": 0.1
+  }
+}
