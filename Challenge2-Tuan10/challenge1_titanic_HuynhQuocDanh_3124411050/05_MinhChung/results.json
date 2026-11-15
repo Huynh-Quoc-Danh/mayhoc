@@ -1,0 +1,137 @@
+{
+  "n_train": 14396,
+  "n_classes": 11,
+  "class_counts": {
+    "Acoustic/Folk": 500,
+    "Alt_Music": 1098,
+    "Blues": 1018,
+    "Bollywood": 322,
+    "Country": 310,
+    "HipHop": 1157,
+    "Indie": 2069,
+    "Instrumental": 461,
+    "Metal": 1483,
+    "Pop": 2019,
+    "Rock": 3959
+  },
+  "imbalance_ratio": 12.8,
+  "missing_pct": {
+    "instrumentalness": 24.6,
+    "key": 11.2,
+    "Popularity": 2.3
+  },
+  "n_duration_minutes": 2075,
+  "n_artists": 7913,
+  "artist_single_class_pct": 82.6,
+  "n_features": 63,
+  "best_model": "Stacking",
+  "per_class_f1": {
+    "Acoustic/Folk": 0.82,
+    "Alt_Music": 0.286,
+    "Blues": 0.672,
+    "Bollywood": 0.886,
+    "Country": 0.8,
+    "HipHop": 0.795,
+    "Indie": 0.463,
+    "Instrumental": 0.953,
+    "Metal": 0.711,
+    "Pop": 0.657,
+    "Rock": 0.554
+  },
+  "test_pred_dist": {
+    "Acoustic/Folk": 146,
+    "Alt_Music": 416,
+    "Blues": 336,
+    "Bollywood": 82,
+    "Country": 80,
+    "HipHop": 316,
+    "Indie": 482,
+    "Instrumental": 111,
+    "Metal": 465,
+    "Pop": 468,
+    "Rock": 698
+  },
+  "top_features": [
+    "dur_in_minutes",
+    "log_acoustic",
+    "acousticness",
+    "energy",
+    "te_3",
+    "Popularity",
+    "loudness",
+    "log_speech",
+    "te_4",
+    "speechiness",
+    "te_2",
+    "instrumentalness",
+    "log_instrumental",
+    "valence",
+    "danceability"
+  ],
+  "results": {
+    "LogisticRegression": {
+      "macro_f1": 0.6576868078784892,
+      "weighted_f1": 0.579483620127992,
+      "accuracy": 0.5857182550708531,
+      "macro_f1_std": 0.008815747626636991,
+      "time_s": 2.8
+    },
+    "KNN": {
+      "macro_f1": 0.6034639509282733,
+      "weighted_f1": 0.556910575194464,
+      "accuracy": 0.5710614059460961,
+      "macro_f1_std": 0.006980255012533573,
+      "time_s": 0.6
+    },
+    "DecisionTree": {
+      "macro_f1": 0.5761942001216173,
+      "weighted_f1": 0.4936790166274728,
+      "accuracy": 0.5079883300916921,
+      "macro_f1_std": 0.006903326285126328,
+      "time_s": 0.8
+    },
+    "RandomForest": {
+      "macro_f1": 0.674104705307543,
+      "weighted_f1": 0.6133959724137907,
+      "accuracy": 0.6270491803278688,
+      "macro_f1_std": 0.004151821523501988,
+      "time_s": 36.5
+    },
+    "ExtraTrees": {
+      "macro_f1": 0.6688851750018361,
+      "weighted_f1": 0.6044233972409648,
+      "accuracy": 0.6148235621005835,
+      "macro_f1_std": 0.008265730116667027,
+      "time_s": 21.9
+    },
+    "HistGB": {
+      "macro_f1": 0.6873548849352376,
+      "weighted_f1": 0.6067985062463163,
+      "accuracy": 0.6085718255070853,
+      "macro_f1_std": 0.005229173655807331,
+      "time_s": 30.9
+    },
+    "MLP": {
+      "macro_f1": 0.6656584890553593,
+      "weighted_f1": 0.6084686349994856,
+      "accuracy": 0.6234370658516255,
+      "macro_f1_std": 0.008955573954590906,
+      "time_s": 6.2
+    },
+    "SoftVoting": {
+      "macro_f1": 0.6877924864196578,
+      "weighted_f1": 0.6187444200650152,
+      "accuracy": 0.626979716587941,
+      "members": [
+        "HistGB",
+        "RandomForest",
+        "ExtraTrees"
+      ]
+    },
+    "Stacking": {
+      "macro_f1": 0.6906578878802591,
+      "weighted_f1": 0.6135840253447926,
+      "accuracy": 0.6141289247013059
+    }
+  }
+}
