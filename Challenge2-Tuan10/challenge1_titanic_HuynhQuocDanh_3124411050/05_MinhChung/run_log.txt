@@ -1,0 +1,22 @@
+EDA: {'n_train': 14396, 'imbalance_ratio': 12.8, 'n_duration_minutes': 2075, 'n_artists': 7913}
+  fold 1/5 done
+  fold 2/5 done
+  fold 3/5 done
+  fold 4/5 done
+  fold 5/5 done
+LogisticRegression   macroF1 0.6577 ± 0.0088  wF1 0.5795  acc 0.5857
+KNN                  macroF1 0.6035 ± 0.0070  wF1 0.5569  acc 0.5711
+DecisionTree         macroF1 0.5762 ± 0.0069  wF1 0.4937  acc 0.5080
+RandomForest         macroF1 0.6741 ± 0.0042  wF1 0.6134  acc 0.6270
+ExtraTrees           macroF1 0.6689 ± 0.0083  wF1 0.6044  acc 0.6148
+HistGB               macroF1 0.6874 ± 0.0052  wF1 0.6068  acc 0.6086
+MLP                  macroF1 0.6657 ± 0.0090  wF1 0.6085  acc 0.6234
+SoftVoting           macroF1 0.6878  wF1 0.6187  acc 0.6270
+Stacking             macroF1 0.6907  wF1 0.6136  acc 0.6141
+Best: Stacking | per-class F1: {'Acoustic/Folk': 0.82, 'Alt_Music': 0.286, 'Blues': 0.672, 'Bollywood': 0.886, 'Country': 0.8, 'HipHop': 0.795, 'Indie': 0.463, 'Instrumental': 0.953, 'Metal': 0.711, 'Pop': 0.657, 'Rock': 0.554}
+Done -> ../outputs
+                                                      config  macro_f1  weighted_f1  accuracy
+                   A. Raw audio features (median imputation)  0.571174     0.483133  0.492567
+B. + cleaning (duration units, missing flags, one-hot, logs)  0.574571     0.487738  0.496179
+                       C. + text features (script, keywords)  0.590746     0.502150  0.508544
+                          D. + artist target encoding (full)  0.687355     0.606799  0.608572
