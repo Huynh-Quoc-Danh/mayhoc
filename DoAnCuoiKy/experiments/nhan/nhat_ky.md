@@ -7,6 +7,7 @@
 | 12/11 | Cài môi trường, tạo nhánh nhan. Chạy tai_lap_E02 (nhan_20261112_141200), dt_depth50 (nhan_20261112_153041), dt_leaf3 (nhan_20261112_153114), xgb_lan_dau (nhan_20261112_153316) | E02 chạy lại ra 0.9408, đúng giữa kỳ. depth 50 ra 0.918, leaf 3 ra 0.932. XGBoost ra 0.9771 | Giới hạn cây đều làm tệ hơn. XGBoost hơn cây đơn nhiều. Bị lỗi pandas 3 nên phải cài lại pandas bản 2. Mai thử Random Forest. |
 | 13/11 | Notebook 06: dt_d20 (nhan_20261113_212725), dt_d100 (nhan_20261113_212916), dt_dNone (nhan_20261113_213047), rf_100 (nhan_20261113_214140), rf_300 (nhan_20261113_214408). Dùng đặc trưng svd 150 | Cây: depth 20 ra 0.932, depth 100 và None ra 0.9406. Random Forest: 100 cây ra 0.9716, 300 cây ra 0.9732 | depth 100 với None giống nhau vì cây chỉ sâu khoảng 37 tầng. Random Forest hơn cây đơn khoảng 3 điểm, 300 cây không hơn 100 bao nhiêu. Mai chỉnh XGBoost và thử max_features cho Random Forest. |
 | 14/11 | Chỉnh XGBoost: xgb_d3 (nhan_20261114_170832), xgb_d6 (nhan_20261114_170957), xgb_d9 (nhan_20261114_171244), xgb_lr005 (nhan_20261114_171419), xgb_lr03 (nhan_20261114_171516), xgb_svd150 (nhan_20261114_171811). Vẽ hình so sánh 3 mô hình cây (mục 7 notebook 06, nhan_so_sanh_mo_hinh_cay.png) | depth 3 = 0.969, depth 6 = 0.9771, depth 9 = 0.9778; lr 0.05 = 0.9757, lr 0.3 = 0.9776; svd 150 = 0.9783 (tốt nhất) | XGBoost hơn Random Forest (0.9732) khoảng 0,5 điểm nhưng vẫn thua SVM (0.9929). Cây sâu hơn thì tốt hơn, lr 0.1 là vừa. Mai làm phân tích lỗi (mục 4). |
+| 15/11 | Quét số cây XGBoost: xgb_n100 (nhan_20261115_180610), xgb_n400 (nhan_20261115_180737). CV 5-fold: cv_xgb_best (nhan_20261115_181114). Làm mục 8 notebook 06: bảng và hình tổng hợp cả nhóm | 100 cây = 0.9761, 400 cây = 0.9789 (tốt nhất). CV = 0.9754 ± 0.0015. Xếp hạng cả nhóm: SVM 0.9930 > LR 0.9909 > NB 0.9869 > CNB 0.9857 > XGB 0.9789 > RF 0.9732 > DT 0.9408 | Thêm cây có giúp. XGBoost vẫn thua SVM khoảng 1,5 điểm kể cả khi CV. 3 ngành làm lạnh khó với mọi mô hình. |
 
 ## Câu hỏi tự trả lời
 
@@ -33,3 +34,7 @@ Khoảng 3 điểm: từ 0.9406 lên 0.9716 (100 cây) và 0.9732 (300 cây). M�
 **14/11 – XGBoost tốt nhất đạt bao nhiêu, có vượt Random Forest và bắt kịp SVM không?**
 
 XGBoost tốt nhất là 0.9783 (depth 9, lr 0.1, svd 150). Có vượt Random Forest (0.9732) nhưng chỉ khoảng 0,5 điểm, còn so với SVM (0.9929) thì vẫn thua khoảng 1,5 điểm. Em nghĩ lý do là mô hình cây phải dùng SVD nén chữ lại, làm mất mấy chi tiết nhỏ như mã model, mà mấy lớp tủ lạnh lại cần đúng mấy chi tiết đó để phân biệt. SVM dùng thẳng n-gram nên giữ được.
+
+**15/11 – Thêm cây có giúp XGBoost không? Xếp hạng cuối cùng và ngành nào khó với mọi mô hình?**
+
+Có giúp: 100 cây được 0.9761, 200 cây 0.9778, 400 cây 0.9789. Thời gian tăng theo số cây nhưng 400 cây vẫn chỉ khoảng 33 giây nên đáng. Xếp hạng cả nhóm từ cao xuống: SVM, LR, NB, ComplementNB, XGBoost, Random Forest, Decision Tree, mô hình tuyến tính đều đứng trên mô hình cây. 3 ngành Fridges, Freezers, Fridge Freezers luôn thấp nhất ở mọi mô hình, vì tên ngành và từ ngữ trong tiêu đề trùng nhau nhiều.
