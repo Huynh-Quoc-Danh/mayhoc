@@ -49,3 +49,10 @@
 - **Nhận xét:** dữ liệu chỉ lệch nhẹ nên cân bằng lớp và ComplementNB đều không có lợi. Chia theo sản phẩm làm cả 3 mô hình giảm khoảng 0.5 điểm, thứ hạng giữ nguyên: SVM > LR > NB; NB nhanh nhất.
 - Notebook 04 mục 9: bảng + kết luận. Sơ đồ tiền xử lý: docs/hinh_ve_tay/loc_so_do_tien_xu_ly.jpg.
 - **Ngày mai:** theo phân công của nhóm.
+
+## 16/11/2026 – Lộc
+- loc_20261116_193144 – lr_giai_thich: chạy lại LR hybrid char (2,4) C=100 để lấy hệ số, Test F1 0.9909 (trùng lr_h24_C100). Notebook 04 mục 10: hình 8 đặc trưng mạnh nhất mỗi ngành (figures/loc_dac_trung_quan_trong.png).
+- **Nhận xét:** CPUs, Cameras, Dishwashers, Microwaves, TVs dựa vào từ khóa (intel, camera, dishwasher, geschirrsp ler, microwave, tv). Nhóm tủ lạnh dựa vào mảnh mã model Bosch/Siemens: ' kg' (Fridge Freezers), ' ki', 'ks' (Fridges), ' g' (Freezers), nên n-gram ký tự quan trọng nhất ở nhóm này. '14' ở Washing Machines là từ 1400 vòng/phút, 'sim' ở Mobile Phones là từ dual sim.
+- **Họp nhóm 1:** trình bày kết quả NB/LR (LR C=100: Test 0.9909, CV 0.9875, Group 0.9851; NB: CV 0.9861), balanced và ComplementNB không giúp, đồng ý chọn SVM làm mô hình cuối.
+- **Nhóm quyết định:** chọn SVM hybrid char (2,4), C=3 làm mô hình cuối (CV 0.9909, Group 0.9875); LR C=100 là mô hình tuyến tính tốt thứ hai, dùng để giải thích đặc trưng trong báo cáo.
+- **Ngày mai:** theo phân công của nhóm.
