@@ -1,0 +1,11 @@
+{
+ "run_id": "danh_20261117_072154",
+ "thoi_diem_chay": "2026-11-17 07:21:54",
+ "git_commit": "ed5a4a6",
+ "ti_le": 0.1,
+ "n_train": 2824,
+ "test_f1_macro": 0.966395,
+ "train_time_s": 0.355416,
+ "nhan_xet": "",
+ "rut_ra": ""
+}

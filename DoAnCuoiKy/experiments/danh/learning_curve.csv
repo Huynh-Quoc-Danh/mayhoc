@@ -1,0 +1,7 @@
+﻿run_id,thoi_diem_chay,git_commit,ti_le,n_train,test_f1_macro,train_time_s,nhan_xet,rut_ra
+danh_20261117_072153,2026-11-17 07:21:53,ed5a4a6,0.05,1412,0.952998,0.217114,"5% Train (1.412 mẫu): Test F1 0.9530, đã khá cao nhờ TF-IDF char n-gram.",Ít dữ liệu vẫn học được từ khóa chính; lỗi chủ yếu ở 3 ngành làm lạnh.
+danh_20261117_072154,2026-11-17 07:21:54,ed5a4a6,0.1,2824,0.966395,0.355416,"10% Train (2.824 mẫu): Test F1 0.9664, tăng 1.3 điểm so với 5%.",Giai đoạn đầu F1 tăng nhanh khi thêm dữ liệu.
+danh_20261117_072155,2026-11-17 07:21:55,ed5a4a6,0.25,7062,0.978928,0.90218,"25% Train (7.062 mẫu): Test F1 0.9789, bằng XGBoost dùng 100% dữ liệu (0.9789).",Mô hình tuyến tính trên TF-IDF hiệu quả dữ liệu hơn hẳn mô hình cây trên SVD.
+danh_20261117_072158,2026-11-17 07:21:58,ed5a4a6,0.5,14124,0.988471,1.908675,50% Train (14.124 mẫu): Test F1 0.9885.,Vẫn còn tăng rõ từ 50% lên 75%.
+danh_20261117_072201,2026-11-17 07:22:01,ed5a4a6,0.75,21186,0.992419,2.665921,"75% Train (21.186 mẫu): Test F1 0.9924, chỉ thấp hơn mô hình đầy đủ 0.0005.",Từ đây đường cong gần như bão hòa.
+danh_20261117_072204,2026-11-17 07:22:04,ed5a4a6,1.0,28248,0.992893,3.365762,"100% Train (28.248 mẫu): Test F1 0.9929, trùng mô hình cuối (danh_20261113_170944).",Thêm dữ liệu cùng loại khó tăng thêm; muốn cải thiện cần xử lý tiêu đề chỉ có mã model và nhãn nhiễu.
