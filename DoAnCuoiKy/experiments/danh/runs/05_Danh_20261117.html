@@ -1,0 +1,1256 @@
+<!doctype html><html><head><meta charset='utf-8'><title>05_Danh_SVM_DacTrung.ipynb</title><style>pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #3D7B7B; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #F00 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666 } /* Operator */
+.highlight .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #9C6500 } /* Comment.Preproc */
+.highlight .cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.highlight .gr { color: #E40000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #008400 } /* Generic.Inserted */
+.highlight .go { color: #717171 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #04D } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #687822 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #00F; font-weight: bold } /* Name.Class */
+.highlight .no { color: #800 } /* Name.Constant */
+.highlight .nd { color: #A2F } /* Name.Decorator */
+.highlight .ni { color: #717171; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #00F } /* Name.Function */
+.highlight .nl { color: #767600 } /* Name.Label */
+.highlight .nn { color: #00F; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #BBB } /* Text.Whitespace */
+.highlight .mb { color: #666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666 } /* Literal.Number.Float */
+.highlight .mh { color: #666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #A45A77 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #00F } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666 } /* Literal.Number.Integer.Long */body{font-family:Segoe UI,Arial,sans-serif;max-width:1100px;margin:24px auto;padding:0 16px;color:#222}.cell{margin:14px 0}.prompt{color:#888;font:12px monospace}.highlight{background:#f7f7f7;padding:6px 10px;border:1px solid #e3e3e3;overflow-x:auto}pre.out{background:#fff;border-left:3px solid #ccc;padding:6px 10px;overflow-x:auto;font-size:12px}table{border-collapse:collapse;font-size:12px}td,th{border:1px solid #ddd;padding:3px 6px}img{max-width:100%}blockquote{border-left:3px solid #9bc;margin:0;padding:2px 12px;color:#333}</style></head><body>
+<p class='prompt'>Xuất từ 05_Danh_SVM_DacTrung.ipynb</p>
+<div class='cell'><h1>05 – SVM tuyến tính: ablation đặc trưng, tinh chỉnh C, kiểm chứng Group split</h1>
+<p><strong>Người thực hiện:</strong> danh (Huỳnh Quốc Danh)<br />
+<strong>Mục tiêu:</strong> Trả lời RQ1 (đặc trưng nào giúp) và chọn mô hình cuối cùng cho hệ thống.</p>
+<p><strong>Quy tắc:</strong> chạy TỪNG ô một, đổi tham số rồi chạy lại; mỗi ngày làm xong thì <code>git add</code> + <code>git commit -m &quot;&lt;mô tả đúng việc đã làm&gt;&quot;</code> + <code>git push</code>. Cuối buổi xuất HTML: <code>python ../scripts/export_notebook_html.py &lt;notebook&gt; danh</code>.</p>
+<p><strong>Các bước:</strong></p>
+<ol>
+<li>Ablation: word → char → hybrid → full (cùng C).</li>
+<li>Thử char_ngram (2,4), (3,5), (3,6).</li>
+<li>Quét C ∈ {0.03, 0.1, 0.3, 1, 3} có CV.</li>
+<li>class_weight='balanced' có giúp 3 lớp tủ lạnh/tủ đông?</li>
+<li>Chạy lại cấu hình tốt nhất với split='group'.</li>
+<li>GridSearchCV nhỏ (tùy chọn) và kết luận mô hình chọn.</li>
+</ol>
+</div>
+<div class='cell'><div class='prompt'>In [1]:</div><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span><span class="o">,</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="o">,</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'../src'</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">run_experiment</span><span class="w"> </span><span class="kn">import</span> <span class="n">run</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">figlog</span><span class="w"> </span><span class="kn">import</span> <span class="n">save_fig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">exp_logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_generic</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">common</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_data</span><span class="p">,</span> <span class="n">clean_title</span>
+</pre></div>
+
+</div>
+<div class='cell'><h2>1. Ablation đặc trưng</h2>
+</div>
+<div class='cell'><div class='prompt'>In [7]:</div><div class="highlight"><pre><span></span><span class="n">res</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">'danh'</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">'svc'</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'word'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">'C'</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">},</span> <span class="n">exp_name</span><span class="o">=</span><span class="s1">'abl_word'</span><span class="p">,</span> <span class="n">show_report</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+<pre class='out'>[danh_20261113_222803] svc/word {&#x27;C&#x27;: 1.0} split=strat
+   train_time_s                 1.9970
+   test_accuracy                0.9669
+   test_precision_macro         0.9685
+   test_recall_macro            0.9674
+   test_f1_macro                0.9679
+   test_f1_weighted             0.9669
+   f1_Fridges                   0.9234
+   f1_Freezers                  0.9530
+   f1_Fridge_Freezers           0.9495
+→ Đã ghi vào experiments/danh/experiment_log.csv. Hãy mở file và điền cột nhan_xet.
+</pre>
+</div>
+<div class='cell'><blockquote>
+<p><strong>Nhật ký lần chạy</strong> – ngày giờ đã tự ghi trong <code>experiments/danh/</code>. Sau khi xem kết quả, mở file CSV và <strong>tự viết</strong> cột <code>nhan_xet</code> (thấy gì?) và <code>rut_ra</code> (quyết định gì cho lần sau?). Viết lại ngắn gọn ở ô này:</p>
+<ul>
+<li>Kết quả chính:SVM (LinearSVC, C=1) chỉ dùng word TF-IDF (1,2): Macro-F1 0.9679, Accuracy 0.9669; F1 Fridges 0.9234, Freezers 0.9530, Fridge Freezers 0.9495 (run_id danh_20261113_164215). Chạy lại ra đúng bằng ngày 12/11 (danh_20261112_124307) → kết quả tái lập được.</li>
+<li>Nhận xét: đây là mốc so sánh. Ba lớp tủ lạnh/tủ đông yếu nhất (đều dưới 0.96), Fridges thấp nhất, vì nhiều tiêu đề chỉ có hãng + mã model mà word n-gram không đọc được. Thêm char n-gram (hybrid 2,4) tăng lên 0.9924 (+2,45 điểm); thêm hình thái + merchant (full) chỉ được 0.9920, không hơn hybrid.</li>
+<li>Lần sau thử: dùng hybrid làm đặc trưng chính, so phạm vi char (2,4)/(3,5)/(2,5)/(3,6) bằng 5-fold CV.</li>
+</ul>
+</blockquote>
+</div>
+<div class='cell'><p>Đổi <code>features</code> thành <code>'char'</code>, <code>'hybrid'</code>, <code>'full'</code> và chạy lại – mỗi lần ghi nhận xét.</p>
+</div>
+<div class='cell'><h2>2. Phạm vi n-gram ký tự</h2>
+</div>
+<div class='cell'><div class='prompt'>In [8]:</div><div class="highlight"><pre><span></span><span class="n">res</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">'danh'</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">'svc'</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'hybrid'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">'C'</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">},</span> <span class="n">char_ngram</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">exp_name</span><span class="o">=</span><span class="s1">'char_24'</span><span class="p">,</span> <span class="n">show_report</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+<pre class='out'>[danh_20261113_222855] svc/hybrid {&#x27;C&#x27;: 1.0} split=strat
+   train_time_s                 6.3731
+   test_accuracy                0.9929
+   test_precision_macro         0.9927
+   test_recall_macro            0.9921
+   test_f1_macro                0.9924
+   test_f1_weighted             0.9929
+   f1_Fridges                   0.9818
+   f1_Freezers                  0.9739
+   f1_Fridge_Freezers           0.9918
+→ Đã ghi vào experiments/danh/experiment_log.csv. Hãy mở file và điền cột nhan_xet.
+</pre>
+</div>
+<div class='cell'><blockquote>
+<p><strong>Nhật ký lần chạy</strong> – ngày giờ đã tự ghi trong <code>experiments/danh/</code>. Sau khi xem kết quả, mở file CSV và <strong>tự viết</strong> cột <code>nhan_xet</code> (thấy gì?) và <code>rut_ra</code> (quyết định gì cho lần sau?). Viết lại ngắn gọn ở ô này:</p>
+<ul>
+<li>Kết quả chính: SVM (C=1) với hybrid TF-IDF = word (1,2) + char_wb (2,4): Macro-F1 0.9924, Accuracy 0.9929; F1 Fridges 0.9818, Freezers 0.9739, Fridge Freezers 0.9918; train 6.6 s.</li>
+<li>Nhận xét:  so với chỉ dùng word (0.9679), thêm n-gram ký tự tăng +2,45 điểm; Fridges tăng mạnh nhất (0.923 → 0.982). Lý do: char n-gram đọc được tiền tố mã model (vd &quot;kif&quot;, &quot;ks&quot;) và từ tiếng Đức mất dấu mà word n-gram bỏ sót. Các phạm vi khác: (2,5) 0.9924 nhưng chậm hơn, (3,5) 0.9917, (3,6) 0.9910. CV xác nhận (2,4) = 0.99066 ± 0.00095 cao hơn (3,5) = 0.98890 ± 0.00080, chênh lớn hơn std nên tốt hơn thật.</li>
+<li>Lần sau thử: giữ char (2,4), quét C = 1, 3, 10 có CV.</li>
+</ul>
+</blockquote>
+</div>
+<div class='cell'><h2>3. Quét C (có 5-fold CV)</h2>
+</div>
+<div class='cell'><div class='prompt'>In [9]:</div><div class="highlight"><pre><span></span><span class="n">res</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">'danh'</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">'svc'</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'full'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">'C'</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">},</span> <span class="n">cv</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exp_name</span><span class="o">=</span><span class="s1">'C_0.3'</span><span class="p">,</span> <span class="n">show_report</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+<pre class='out'>[danh_20261113_223018] svc/full {&#x27;C&#x27;: 0.3} split=strat
+   cv_f1_macro_mean             0.9866
+   cv_f1_macro_std              0.0010
+   cv_time_s                    60.5743
+   train_time_s                 14.8170
+   test_accuracy                0.9904
+   test_precision_macro         0.9905
+   test_recall_macro            0.9895
+   test_f1_macro                0.9900
+   test_f1_weighted             0.9904
+   f1_Fridges                   0.9709
+   f1_Freezers                  0.9748
+   f1_Fridge_Freezers           0.9891
+→ Đã ghi vào experiments/danh/experiment_log.csv. Hãy mở file và điền cột nhan_xet.
+</pre>
+</div>
+<div class='cell'><blockquote>
+<p><strong>Nhật ký lần chạy</strong> – ngày giờ đã tự ghi trong <code>experiments/danh/</code>. Sau khi xem kết quả, mở file CSV và <strong>tự viết</strong> cột <code>nhan_xet</code> (thấy gì?) và <code>rut_ra</code> (quyết định gì cho lần sau?). Viết lại ngắn gọn ở ô này:</p>
+<ul>
+<li>Kết quả chính: SVM full (hybrid char 3,5 + hình thái + merchant), C=0.3, 5-fold CV: CV Macro-F1 0.9866 ± 0.0010; Test Macro-F1 0.9900, Accuracy 0.9904; F1 Fridges 0.9709, Freezers 0.9748 (run_id danh_20261113_164354, trùng khớp ngày 12/11). Quét thêm bằng terminal với hybrid char (2,4): C=1 → CV 0.99066 ± 0.00095; C=3 → CV 0.99092 ± 0.00131, Test 0.9929, Freezers 0.9762; C=10 → CV 0.99049 ± 0.00161</li>
+<li>Nhận xét: C nhỏ (0.3) phạt quá mạnh nên mô hình bị đơn giản hóa, F1 thấp hơn C=1 khoảng 0.2 điểm, Fridges giảm rõ nhất. C=1 và C=3 gần như ngang nhau (CV chênh 0.0003, nhỏ hơn std). C=10 bắt đầu giảm và std tăng, tức kém ổn định hơn.</li>
+<li>Lần sau thử: chọn C=3 với hybrid char (2,4); chạy cấu hình này với split='group' và lưu làm mô hình cuối.</li>
+</ul>
+</blockquote>
+</div>
+<div class='cell'><h2>4. class_weight</h2>
+</div>
+<div class='cell'><div class='prompt'>In [10]:</div><div class="highlight"><pre><span></span><span class="n">res</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">'danh'</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">'svc'</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'full'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">'C'</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">'class_weight'</span><span class="p">:</span> <span class="s1">'balanced'</span><span class="p">},</span> <span class="n">exp_name</span><span class="o">=</span><span class="s1">'balanced'</span><span class="p">)</span>
+</pre></div>
+
+<pre class='out'>[danh_20261113_223056] svc/full {&#x27;C&#x27;: 1.0, &#x27;class_weight&#x27;: &#x27;balanced&#x27;} split=strat
+   train_time_s                 17.4056
+   test_accuracy                0.9921
+   test_precision_macro         0.9917
+   test_recall_macro            0.9912
+   test_f1_macro                0.9914
+   test_f1_weighted             0.9921
+   f1_Fridges                   0.9791
+   f1_Freezers                  0.9727
+   f1_Fridge_Freezers           0.9918
+                  precision    recall  f1-score   support
+
+            CPUs     0.9987    0.9987    0.9987       773
+ Digital Cameras     0.9944    0.9944    0.9944       540
+     Dishwashers     0.9913    0.9942    0.9927       685
+        Freezers     0.9772    0.9683    0.9727       442
+ Fridge Freezers     0.9918    0.9918    0.9918      1100
+         Fridges     0.9804    0.9777    0.9791       717
+      Microwaves     0.9979    0.9979    0.9979       468
+   Mobile Phones     0.9951    1.0000    0.9976       816
+             TVs     0.9972    0.9944    0.9958       713
+Washing Machines     0.9926    0.9951    0.9938       809
+
+        accuracy                         0.9921      7063
+       macro avg     0.9917    0.9912    0.9914      7063
+    weighted avg     0.9921    0.9921    0.9921      7063
+
+→ Đã ghi vào experiments/danh/experiment_log.csv. Hãy mở file và điền cột nhan_xet.
+</pre>
+</div>
+<div class='cell'><blockquote>
+<p><strong>Nhật ký lần chạy</strong> – ngày giờ đã tự ghi trong <code>experiments/danh/</code>. Sau khi xem kết quả, mở file CSV và <strong>tự viết</strong> cột <code>nhan_xet</code> (thấy gì?) và <code>rut_ra</code> (quyết định gì cho lần sau?). Viết lại ngắn gọn ở ô này:</p>
+<ul>
+<li>Kết quả chính: SVM full, C=1, class_weight='balanced': Macro-F1 0.9914, Accuracy 0.9921; F1 Fridges 0.9791, Freezers 0.9727, Fridge Freezers 0.9918 (run_id danh_20261113_164414, trùng khớp ngày 12/11). So với không cân bằng (full C=1): Macro-F1 0.9920, Freezers 0.9749.</li>
+<li>Nhận xét: cân bằng trọng số lớp không giúp, Macro-F1 giảm 0.0006 và Freezers còn giảm nhẹ. Bảng phân loại cho thấy Freezers có recall thấp nhất (0.9683, tức 14/442 tủ đông bị đoán sang lớp khác). Freezers là lớp ít nhất (442 mẫu Test) nhưng mức lệch lớp nhẹ (~2,5 lần), nên lỗi chủ yếu do trùng từ vựng với Fridges/Fridge Freezers chứ không phải do thiếu mẫu. Các lớp điện tử (CPUs, Mobile Phones, Microwaves) gần như tuyệt đối (F1 ≥ 0.997).</li>
+<li>Lần sau thử: bỏ class_weight; muốn cải thiện Freezers thì cần đặc trưng phân biệt tốt hơn.</li>
+</ul>
+</blockquote>
+</div>
+<div class='cell'><h2>5. Group split theo Cluster ID</h2>
+<p>Câu hỏi phải trả lời được: <em>vì sao F1 giảm khi chia theo sản phẩm? giảm bao nhiêu là chấp nhận được?</em></p>
+</div>
+<div class='cell'><div class='prompt'>In [11]:</div><div class="highlight"><pre><span></span><span class="n">res</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">'danh'</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">'svc'</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'full'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">'C'</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">},</span> <span class="n">split</span><span class="o">=</span><span class="s1">'group'</span><span class="p">,</span> <span class="n">exp_name</span><span class="o">=</span><span class="s1">'group_best'</span><span class="p">,</span> <span class="n">show_report</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+<pre class='out'>[danh_20261113_223116] svc/full {&#x27;C&#x27;: 1.0} split=group
+   train_time_s                 17.9700
+   test_accuracy                0.9871
+   test_precision_macro         0.9877
+   test_recall_macro            0.9860
+   test_f1_macro                0.9868
+   test_f1_weighted             0.9871
+   f1_Fridges                   0.9614
+   f1_Freezers                  0.9761
+   f1_Fridge_Freezers           0.9804
+→ Đã ghi vào experiments/danh/experiment_log.csv. Hãy mở file và điền cột nhan_xet.
+</pre>
+</div>
+<div class='cell'><blockquote>
+<p><strong>Nhật ký lần chạy</strong> – ngày giờ đã tự ghi trong <code>experiments/danh/</code>. Sau khi xem kết quả, mở file CSV và <strong>tự viết</strong> cột <code>nhan_xet</code> (thấy gì?) và <code>rut_ra</code> (quyết định gì cho lần sau?). Viết lại ngắn gọn ở ô này:</p>
+<ul>
+<li>Kết quả chính: SVM full, C=1, chia GroupShuffleSplit theo Cluster ID (cùng một sản phẩm thực không nằm ở cả Train và Test): Macro-F1 0.9868, Accuracy 0.9871; F1 Fridges 0.9614, Freezers 0.9761, Fridge Freezers 0.9804; tập Test 7.154 mẫu (run_id danh_20261113_164436, trùng khớp ngày 12/11). So với chia ngẫu nhiên Stratified: 0.9920.</li>
+<li>Nhận xét: F1 giảm 0.52 điểm khi tách hẳn sản phẩm. Lý do: khi chia ngẫu nhiên, nhiều offer trong Test có &quot;anh em&quot; cùng sản phẩm (tiêu đề gần giống) trong Train, nên kết quả hơi lạc quan. Fridges giảm nhiều nhất (0.9791 → 0.9614), cho thấy tủ lạnh phụ thuộc nhiều vào việc đã gặp đúng mẫu đó. Dù vậy, với sản phẩm hoàn toàn mới mô hình vẫn đạt ~0.987, tức là học được dấu hiệu chung của từng ngành chứ không chỉ học thuộc tiêu đề. Giữa kỳ, mô hình chỉ dùng word giảm 1,2–2,5 điểm; char n-gram giúp mô hình tổng quát tốt hơn.</li>
+<li>Lần sau thử: chạy cấu hình cuối (hybrid char 2,4, C=3) với split='group' để báo cáo kết quả trên sản phẩm mới; khi tinh chỉnh cuối kỳ nên dùng GroupKFold.</li>
+</ul>
+</blockquote>
+</div>
+<div class='cell'><h2>6. Bảng so sánh &amp; hình</h2>
+</div>
+<div class='cell'><div class='prompt'>In [12]:</div><div class="highlight"><pre><span></span><span class="n">log</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../experiments/danh/experiment_log.csv'</span><span class="p">)</span>
+<span class="n">log</span><span class="p">[[</span><span class="s1">'run_id'</span><span class="p">,</span><span class="s1">'ten_thi_nghiem'</span><span class="p">,</span><span class="s1">'features'</span><span class="p">,</span><span class="s1">'params'</span><span class="p">,</span><span class="s1">'split'</span><span class="p">,</span><span class="s1">'test_f1_macro'</span><span class="p">,</span><span class="s1">'f1_Fridges'</span><span class="p">,</span><span class="s1">'f1_Freezers'</span><span class="p">,</span><span class="s1">'nhan_xet'</span><span class="p">]]</span>
+</pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>run_id</th>
+      <th>ten_thi_nghiem</th>
+      <th>features</th>
+      <th>params</th>
+      <th>split</th>
+      <th>test_f1_macro</th>
+      <th>f1_Fridges</th>
+      <th>f1_Freezers</th>
+      <th>nhan_xet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>danh_20261112_124307</td>
+      <td>abl_word</td>
+      <td>word</td>
+      <td>{"C": 1.0}</td>
+      <td>strat</td>
+      <td>0.967909</td>
+      <td>0.923398</td>
+      <td>0.953036</td>
+      <td>F1 0.9679, khớp giữa kỳ. Ba lớp tủ lạnh/tủ đôn...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>danh_20261112_124329</td>
+      <td>char_24</td>
+      <td>hybrid</td>
+      <td>{"C": 1.0}</td>
+      <td>strat</td>
+      <td>0.992425</td>
+      <td>0.981844</td>
+      <td>0.973893</td>
+      <td>F1 0.9924 (+2,45 điểm), Fridges tăng lên 0.982...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>danh_20261112_131842</td>
+      <td>C_0.3</td>
+      <td>full</td>
+      <td>{"C": 0.3}</td>
+      <td>strat</td>
+      <td>0.990015</td>
+      <td>0.970914</td>
+      <td>0.974828</td>
+      <td>F1 0.9900, thấp hơn C=1 (0.9920). CV 0.9866 ± ...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>danh_20261112_131859</td>
+      <td>balanced</td>
+      <td>full</td>
+      <td>{"C": 1.0, "class_weight": "balanced"}</td>
+      <td>strat</td>
+      <td>0.991449</td>
+      <td>0.979050</td>
+      <td>0.972727</td>
+      <td>F1 0.9914, thấp hơn khi không cân bằng. Freeze...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>danh_20261112_131917</td>
+      <td>group_best</td>
+      <td>full</td>
+      <td>{"C": 1.0}</td>
+      <td>group</td>
+      <td>0.986821</td>
+      <td>0.961420</td>
+      <td>0.976067</td>
+      <td>F1 0.9868, giảm 0,5 điểm. Fridges giảm nhiều n...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>danh_20261112_133323</td>
+      <td>abl_full</td>
+      <td>full</td>
+      <td>{"C": 1.0}</td>
+      <td>strat</td>
+      <td>0.991971</td>
+      <td>0.981158</td>
+      <td>0.974943</td>
+      <td>F1 0.9920, khớp E06. Freezers thấp nhất (0.975...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>danh_20261113_164215</td>
+      <td>abl_word</td>
+      <td>word</td>
+      <td>{"C": 1.0}</td>
+      <td>strat</td>
+      <td>0.967909</td>
+      <td>0.923398</td>
+      <td>0.953036</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>danh_20261113_164224</td>
+      <td>char_24</td>
+      <td>hybrid</td>
+      <td>{"C": 1.0}</td>
+      <td>strat</td>
+      <td>0.992425</td>
+      <td>0.981844</td>
+      <td>0.973893</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>danh_20261113_164354</td>
+      <td>C_0.3</td>
+      <td>full</td>
+      <td>{"C": 0.3}</td>
+      <td>strat</td>
+      <td>0.990015</td>
+      <td>0.970914</td>
+      <td>0.974828</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>danh_20261113_164414</td>
+      <td>balanced</td>
+      <td>full</td>
+      <td>{"C": 1.0, "class_weight": "balanced"}</td>
+      <td>strat</td>
+      <td>0.991449</td>
+      <td>0.979050</td>
+      <td>0.972727</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>danh_20261113_164436</td>
+      <td>group_best</td>
+      <td>full</td>
+      <td>{"C": 1.0}</td>
+      <td>group</td>
+      <td>0.986821</td>
+      <td>0.961420</td>
+      <td>0.976067</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>danh_20261113_170514</td>
+      <td>char_36</td>
+      <td>hybrid</td>
+      <td>{"C": 1.0}</td>
+      <td>strat</td>
+      <td>0.991034</td>
+      <td>0.978427</td>
+      <td>0.972665</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>danh_20261113_170621</td>
+      <td>char_25</td>
+      <td>hybrid</td>
+      <td>{"C": 1.0}</td>
+      <td>strat</td>
+      <td>0.992359</td>
+      <td>0.982554</td>
+      <td>0.973893</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>danh_20261113_170717</td>
+      <td>cv_char_24</td>
+      <td>hybrid</td>
+      <td>{"C": 1.0}</td>
+      <td>strat</td>
+      <td>0.992425</td>
+      <td>0.981844</td>
+      <td>0.973893</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>danh_20261113_170850</td>
+      <td>cv_char_35</td>
+      <td>hybrid</td>
+      <td>{"C": 1.0}</td>
+      <td>strat</td>
+      <td>0.991671</td>
+      <td>0.980474</td>
+      <td>0.973834</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>danh_20261113_170944</td>
+      <td>C_3</td>
+      <td>hybrid</td>
+      <td>{"C": 3.0}</td>
+      <td>strat</td>
+      <td>0.992893</td>
+      <td>0.983972</td>
+      <td>0.976163</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>danh_20261113_171059</td>
+      <td>C_10</td>
+      <td>hybrid</td>
+      <td>{"C": 10.0}</td>
+      <td>strat</td>
+      <td>0.992780</td>
+      <td>0.983972</td>
+      <td>0.976163</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>danh_20261113_213102</td>
+      <td>kiem_tra_o_D</td>
+      <td>word</td>
+      <td>{"C": 1.0}</td>
+      <td>strat</td>
+      <td>0.967909</td>
+      <td>0.923398</td>
+      <td>0.953036</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>danh_20261113_222803</td>
+      <td>abl_word</td>
+      <td>word</td>
+      <td>{"C": 1.0}</td>
+      <td>strat</td>
+      <td>0.967909</td>
+      <td>0.923398</td>
+      <td>0.953036</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>danh_20261113_222855</td>
+      <td>char_24</td>
+      <td>hybrid</td>
+      <td>{"C": 1.0}</td>
+      <td>strat</td>
+      <td>0.992425</td>
+      <td>0.981844</td>
+      <td>0.973893</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>danh_20261113_223018</td>
+      <td>C_0.3</td>
+      <td>full</td>
+      <td>{"C": 0.3}</td>
+      <td>strat</td>
+      <td>0.990015</td>
+      <td>0.970914</td>
+      <td>0.974828</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>danh_20261113_223056</td>
+      <td>balanced</td>
+      <td>full</td>
+      <td>{"C": 1.0, "class_weight": "balanced"}</td>
+      <td>strat</td>
+      <td>0.991449</td>
+      <td>0.979050</td>
+      <td>0.972727</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>danh_20261113_223116</td>
+      <td>group_best</td>
+      <td>full</td>
+      <td>{"C": 1.0}</td>
+      <td>group</td>
+      <td>0.986821</td>
+      <td>0.961420</td>
+      <td>0.976067</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<div class='cell'><h2>7. Mô hình chọn và lý do</h2>
+<ul>
+<li>Đặc trưng:  Hybrid TF-IDF = word n-gram (1,2) + char_wb n-gram (2,4), sublinear_tf, min_df=2. Vì: thêm n-gram ký tự tăng Macro-F1 từ 0.9679 lên 0.9924 (+2,45 điểm; danh_20261113_164215 → _164224), do ~1/5 tiêu đề chỉ có hãng + mã model hoặc tiếng Đức mất dấu, word n-gram không đọc được còn char n-gram nắm được tiền tố mã model. Phạm vi (2,4) tốt hơn (3,5) thật sự trên 5-fold CV: 0.99066 ± 0.00095 so với 0.98890 ± 0.00080, chênh 0.0018 &gt; std (_170717, _170850); (3,6) kém hơn (0.9910), (2,5) ngang nhưng chậm hơn. Không dùng thêm đặc trưng hình thái + merchant vì không cải thiện (full 0.9920 ≤ hybrid 0.9924).</li>
+<li>Mô hình: LinearSVC (SVM tuyến tính). Vì: tốt nhất trong các mô hình đã thử (NB 0.9663, Logistic 0.9656, Decision Tree 0.9408, XGBoost 0.9771, Random Forest 0.9733 – theo nhật ký nhóm và giữa kỳ), phù hợp dữ liệu văn bản thưa nhiều chiều, huấn luyện chỉ vài giây. class_weight='balanced' không giúp (0.9914 &lt; 0.9920; _164414) nên giữ mặc định.</li>
+<li>Tham số:   Kiểm chứng trên sản phẩm mới (Group split theo Cluster ID): Macro-F1 0.9875 (danh_20261113_231233), giảm 0.54 điểm so với chia ngẫu nhiên – mô hình vẫn tổng quát tốt.</li>
+</ul>
+</div>
+<div class='cell'><h2>8. Mô hình cuối: huấn luyện, lưu và phân tích lỗi</h2>
+</div>
+<div class='cell'><div class='prompt'>In [2]:</div><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">joblib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfusionMatrixDisplay</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Huấn luyện lại mô hình cuối và ghi nhật ký</span>
+<span class="n">res</span><span class="p">,</span> <span class="n">pipe</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">'danh'</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">'svc'</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'hybrid'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">'C'</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">},</span>
+                <span class="n">char_ngram</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">exp_name</span><span class="o">=</span><span class="s1">'final_model'</span><span class="p">,</span> <span class="n">show_report</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Chia lại đúng như lúc huấn luyện (random_state=42) để lấy tập Test</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">();</span> <span class="n">df</span><span class="p">[</span><span class="s1">'clean'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">clean_title</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">'clean'</span><span class="p">,</span> <span class="s1">'merchant_id'</span><span class="p">]],</span> <span class="n">df</span><span class="o">.</span><span class="n">category_label</span><span class="o">.</span><span class="n">values</span>
+<span class="n">Xtr</span><span class="p">,</span> <span class="n">Xte</span><span class="p">,</span> <span class="n">ytr</span><span class="p">,</span> <span class="n">yte</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xte</span><span class="p">)</span>
+
+<span class="c1"># Ma trận nhầm lẫn, lưu kèm nguồn gốc hình</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_predictions</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">xticks_rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Confusion matrix – mô hình cuối (hybrid char 2-4, LinearSVC C=3)'</span><span class="p">)</span>
+<span class="n">save_fig</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="s1">'danh_cm_mo_hinh_cuoi'</span><span class="p">,</span> <span class="n">notebook</span><span class="o">=</span><span class="s1">'05_Danh_SVM_DacTrung.ipynb'</span><span class="p">,</span> <span class="n">member</span><span class="o">=</span><span class="s1">'danh'</span><span class="p">,</span>
+         <span class="n">cell</span><span class="o">=</span><span class="s1">'Mục 8'</span><span class="p">,</span> <span class="n">y_nghia</span><span class="o">=</span><span class="s1">'(tự viết)'</span><span class="p">)</span>
+
+<span class="c1"># Lưu mô hình cuối</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">'../models'</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="s1">'../models/final_svc_hybrid24_C3.joblib'</span><span class="p">,</span> <span class="n">compress</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Danh sách mẫu bị đoán sai</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">Xte</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">pred</span><span class="o">=</span><span class="n">pred</span><span class="p">)</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">err</span><span class="p">[</span><span class="n">err</span><span class="o">.</span><span class="n">category_label</span> <span class="o">!=</span> <span class="n">err</span><span class="o">.</span><span class="n">pred</span><span class="p">]</span>
+<span class="n">err</span><span class="p">[[</span><span class="s1">'product_id'</span><span class="p">,</span> <span class="s1">'title'</span><span class="p">,</span> <span class="s1">'merchant_id'</span><span class="p">,</span> <span class="s1">'category_label'</span><span class="p">,</span> <span class="s1">'pred'</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+    <span class="s1">'../experiments/danh/loi_mo_hinh_cuoi.csv'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8-sig'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Số mẫu sai:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+<span class="n">err</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'category_label'</span><span class="p">,</span> <span class="s1">'pred'</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+<pre class='out'>[danh_20261114_193527] svc/hybrid {&#x27;C&#x27;: 3.0} split=strat
+   train_time_s                 11.2686
+   test_accuracy                0.9933
+   test_precision_macro         0.9931
+   test_recall_macro            0.9926
+   test_f1_macro                0.9929
+   test_f1_weighted             0.9933
+   f1_Fridges                   0.9840
+   f1_Freezers                  0.9762
+   f1_Fridge_Freezers           0.9927
+→ Đã ghi vào experiments/danh/experiment_log.csv. Hãy mở file và điền cột nhan_xet.
+Đã lưu danh_cm_mo_hinh_cuoi.png (ghi nguồn vào figures/FIGURE_INDEX.csv)
+Số mẫu sai: 47
+</pre>
+<pre class='out'>category_label    pred            
+Freezers          Fridges             7
+Fridges           Fridge Freezers     6
+                  Freezers            5
+Fridge Freezers   Fridges             3
+Digital Cameras   Mobile Phones       2
+Washing Machines  Dishwashers         2
+Fridge Freezers   Freezers            2
+Washing Machines  Fridges             2
+TVs               Mobile Phones       2
+Freezers          Washing Machines    2
+dtype: int64</pre>
+</div>
+<div class='cell'><div class='prompt'>In [3]:</div><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.max_colwidth'</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+<span class="n">err</span><span class="p">[[</span><span class="s1">'title'</span><span class="p">,</span> <span class="s1">'category_label'</span><span class="p">,</span> <span class="s1">'pred'</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'category_label'</span><span class="p">,</span> <span class="s1">'pred'</span><span class="p">])</span>
+</pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>category_label</th>
+      <th>pred</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10520</th>
+      <td>2 power 2p n156b3 l0brev.c1 notebook spare part display</td>
+      <td>CPUs</td>
+      <td>TVs</td>
+    </tr>
+    <tr>
+      <th>14118</th>
+      <td>panasonic fz m1 tablet intel core m5 6y57 4gb ddr3 sdram 128gb ssd</td>
+      <td>Digital Cameras</td>
+      <td>CPUs</td>
+    </tr>
+    <tr>
+      <th>14135</th>
+      <td>ge pj1</td>
+      <td>Digital Cameras</td>
+      <td>Mobile Phones</td>
+    </tr>
+    <tr>
+      <th>12381</th>
+      <td>sony xperia xz2 black</td>
+      <td>Digital Cameras</td>
+      <td>Mobile Phones</td>
+    </tr>
+    <tr>
+      <th>19775</th>
+      <td>bauknecht gsu 61415 a eek a skala a bis d gsu 61415 a tr</td>
+      <td>Dishwashers</td>
+      <td>Freezers</td>
+    </tr>
+    <tr>
+      <th>19746</th>
+      <td>wuc 3c24 p x</td>
+      <td>Dishwashers</td>
+      <td>Mobile Phones</td>
+    </tr>
+    <tr>
+      <th>19917</th>
+      <td>baumatic bdwi440</td>
+      <td>Dishwashers</td>
+      <td>Washing Machines</td>
+    </tr>
+    <tr>
+      <th>25726</th>
+      <td>siemens gs51naw45</td>
+      <td>Freezers</td>
+      <td>Dishwashers</td>
+    </tr>
+    <tr>
+      <th>24807</th>
+      <td>hisense fv306n4bc1 tall fridge freezer stainless steel</td>
+      <td>Freezers</td>
+      <td>Fridge Freezers</td>
+    </tr>
+    <tr>
+      <th>25930</th>
+      <td>hotpoint rcnaa300p</td>
+      <td>Freezers</td>
+      <td>Fridge Freezers</td>
+    </tr>
+    <tr>
+      <th>26044</th>
+      <td>aeg atb71121aw</td>
+      <td>Freezers</td>
+      <td>Fridges</td>
+    </tr>
+    <tr>
+      <th>26086</th>
+      <td>baumatic brcfo3580 e</td>
+      <td>Freezers</td>
+      <td>Fridges</td>
+    </tr>
+    <tr>
+      <th>24774</th>
+      <td>liebherr suig 1514 comfort integrierbarer</td>
+      <td>Freezers</td>
+      <td>Fridges</td>
+    </tr>
+    <tr>
+      <th>26195</th>
+      <td>beko tff673apw</td>
+      <td>Freezers</td>
+      <td>Fridges</td>
+    </tr>
+    <tr>
+      <th>25203</th>
+      <td>liebherr suign 1554 premium integrierbarer</td>
+      <td>Freezers</td>
+      <td>Fridges</td>
+    </tr>
+    <tr>
+      <th>25085</th>
+      <td>montpellier mitf300</td>
+      <td>Freezers</td>
+      <td>Fridges</td>
+    </tr>
+    <tr>
+      <th>25560</th>
+      <td>smeg ri360rx refrigerator</td>
+      <td>Freezers</td>
+      <td>Fridges</td>
+    </tr>
+    <tr>
+      <th>25297</th>
+      <td>miele f12020s 2/f12020s 2</td>
+      <td>Freezers</td>
+      <td>Washing Machines</td>
+    </tr>
+    <tr>
+      <th>25643</th>
+      <td>stoves sih600t13 touch control induction hob</td>
+      <td>Freezers</td>
+      <td>Washing Machines</td>
+    </tr>
+    <tr>
+      <th>31115</th>
+      <td>sxs905 ss</td>
+      <td>Fridge Freezers</td>
+      <td>Dishwashers</td>
+    </tr>
+    <tr>
+      <th>30853</th>
+      <td>gorenje einbauk hlger t rfi 4152 aw</td>
+      <td>Fridge Freezers</td>
+      <td>Freezers</td>
+    </tr>
+    <tr>
+      <th>31580</th>
+      <td>lg gsl545wbyv non plumbed water and ice</td>
+      <td>Fridge Freezers</td>
+      <td>Freezers</td>
+    </tr>
+    <tr>
+      <th>28652</th>
+      <td>lec tf55142freestanding 122l 62l a silver</td>
+      <td>Fridge Freezers</td>
+      <td>Fridges</td>
+    </tr>
+    <tr>
+      <th>26401</th>
+      <td>bosch kgv36vw32g own 307l a r frig rateur cong lateurr frig rateurs cong lateurs white led white right vde glass</td>
+      <td>Fridge Freezers</td>
+      <td>Fridges</td>
+    </tr>
+    <tr>
+      <th>30867</th>
+      <td>gorenje k hlschrank rk61620rd eek a</td>
+      <td>Fridge Freezers</td>
+      <td>Fridges</td>
+    </tr>
+    <tr>
+      <th>26816</th>
+      <td>lg gsl761wbxv/gsl761wbxv</td>
+      <td>Fridge Freezers</td>
+      <td>Mobile Phones</td>
+    </tr>
+    <tr>
+      <th>27838</th>
+      <td>hotpoint hbnf5517wuk/hbnf5517wuk</td>
+      <td>Fridge Freezers</td>
+      <td>Washing Machines</td>
+    </tr>
+    <tr>
+      <th>34695</th>
+      <td>electrolux ern1401aow</td>
+      <td>Fridges</td>
+      <td>Freezers</td>
+    </tr>
+    <tr>
+      <th>34722</th>
+      <td>gorenje unterbauf hig n 60 cm riu 6092 aw</td>
+      <td>Fridges</td>
+      <td>Freezers</td>
+    </tr>
+    <tr>
+      <th>35141</th>
+      <td>siemens iq700 fi24dp02 nofrost</td>
+      <td>Fridges</td>
+      <td>Freezers</td>
+    </tr>
+    <tr>
+      <th>35116</th>
+      <td>samsung rr35h6110sa 60cm width/180cm height 350l ttl net a easy handle</td>
+      <td>Fridges</td>
+      <td>Freezers</td>
+    </tr>
+    <tr>
+      <th>33052</th>
+      <td>liebherr k 3710 freestanding freezer comfort</td>
+      <td>Fridges</td>
+      <td>Freezers</td>
+    </tr>
+    <tr>
+      <th>34224</th>
+      <td>bosch kir18v20ffintegrated fridge freezer a white right sn n st 560x 550x 880mm</td>
+      <td>Fridges</td>
+      <td>Fridge Freezers</td>
+    </tr>
+    <tr>
+      <th>34470</th>
+      <td>waeco crx80 camper compressor fridge freezer boat 12v 24v</td>
+      <td>Fridges</td>
+      <td>Fridge Freezers</td>
+    </tr>
+    <tr>
+      <th>34757</th>
+      <td>amica unterbau k hl und gefrierkombination festt rtechnik uks 16158 eek a</td>
+      <td>Fridges</td>
+      <td>Fridge Freezers</td>
+    </tr>
+    <tr>
+      <th>34530</th>
+      <td>britannia breeze retro free standing refrigerator in red</td>
+      <td>Fridges</td>
+      <td>Fridge Freezers</td>
+    </tr>
+    <tr>
+      <th>35014</th>
+      <td>smeg sid140c fridge freezer</td>
+      <td>Fridges</td>
+      <td>Fridge Freezers</td>
+    </tr>
+    <tr>
+      <th>33654</th>
+      <td>iceking rhl550ap2</td>
+      <td>Fridges</td>
+      <td>Fridge Freezers</td>
+    </tr>
+    <tr>
+      <th>15795</th>
+      <td>caple cm140</td>
+      <td>Microwaves</td>
+      <td>Freezers</td>
+    </tr>
+    <tr>
+      <th>4074</th>
+      <td>siemens sf65</td>
+      <td>Mobile Phones</td>
+      <td>Dishwashers</td>
+    </tr>
+    <tr>
+      <th>6453</th>
+      <td>fujifilm x pro2 mirrorless camera twin lens bundle</td>
+      <td>TVs</td>
+      <td>Digital Cameras</td>
+    </tr>
+    <tr>
+      <th>7026</th>
+      <td>diamond lamps diamond bulb only for lg af115 cf 181d cf 3d projector</td>
+      <td>TVs</td>
+      <td>Mobile Phones</td>
+    </tr>
+    <tr>
+      <th>7165</th>
+      <td>konftel 55/55w deskphone adapter</td>
+      <td>TVs</td>
+      <td>Mobile Phones</td>
+    </tr>
+    <tr>
+      <th>23994</th>
+      <td>hotpoint aq113l297e</td>
+      <td>Washing Machines</td>
+      <td>Dishwashers</td>
+    </tr>
+    <tr>
+      <th>23237</th>
+      <td>nordmende wm1002wh white aa rated</td>
+      <td>Washing Machines</td>
+      <td>Dishwashers</td>
+    </tr>
+    <tr>
+      <th>23671</th>
+      <td>bosch kur15a50gb integrated undercounter fridge</td>
+      <td>Washing Machines</td>
+      <td>Fridges</td>
+    </tr>
+    <tr>
+      <th>21431</th>
+      <td>cda ci325/ci325</td>
+      <td>Washing Machines</td>
+      <td>Fridges</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<div class='cell'><h3>8.1. Phân tích 47 mẫu bị đoán sai</h3>
+<p>Tập Test có 7.063 mẫu, mô hình cuối đoán sai 47 mẫu (0,67%). Đọc từng tiêu đề và xếp theo nguyên nhân:</p>
+<table>
+<thead>
+<tr>
+  <th>Nhóm nguyên nhân</th>
+  <th>Số mẫu</th>
+  <th>Tỉ lệ</th>
+  <th>Ví dụ tiêu đề (nhãn thật → mô hình đoán)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Chỉ có hãng + mã model, không có từ khóa ngành</td>
+  <td>25</td>
+  <td>53%</td>
+  <td><code>aeg atb71121aw</code> (Freezers → Fridges); <code>siemens sf65</code> (Mobile Phones → Dishwashers); <code>cda ci325/ci325</code> (Washing Machines → Fridges)</td>
+</tr>
+<tr>
+  <td>Nhãn gốc có vẻ sai (tiêu đề ghi rõ ngành khác)</td>
+  <td>11</td>
+  <td>23%</td>
+  <td><code>sony xperia xz2 black</code> (Digital Cameras → Mobile Phones); <code>smeg sid140c fridge freezer</code> (Fridges → Fridge Freezers); <code>stoves sih600t13 touch control induction hob</code> (Freezers → Washing Machines)</td>
+</tr>
+<tr>
+  <td>Tiếng Đức/Pháp bị mất ký tự có dấu</td>
+  <td>7</td>
+  <td>15%</td>
+  <td><code>gorenje k hlschrank rk61620rd</code> (Fridge Freezers → Fridges); <code>bosch kgv36vw32g ... r frig rateur cong lateur</code> (Fridge Freezers → Fridges)</td>
+</tr>
+<tr>
+  <td>Phụ kiện / tiêu đề lạ</td>
+  <td>3</td>
+  <td>6%</td>
+  <td><code>diamond lamps diamond bulb only for lg ... projector</code> (TVs → Mobile Phones); <code>konftel 55/55w deskphone adapter</code> (TVs → Mobile Phones)</td>
+</tr>
+<tr>
+  <td>Sản phẩm lai</td>
+  <td>1</td>
+  <td>2%</td>
+  <td><code>waeco crx80 camper compressor fridge freezer boat 12v 24v</code> (Fridges → Fridge Freezers)</td>
+</tr>
+<tr>
+  <td><strong>Tổng</strong></td>
+  <td><strong>47</strong></td>
+  <td><strong>100%</strong></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lỗi tập trung ở đâu:</strong> 25/47 lỗi (53%) là nhầm lẫn qua lại giữa 3 ngành làm lạnh Fridges – Freezers – Fridge Freezers (Freezers → Fridges 7, Fridges → Fridge Freezers 6, Fridges → Freezers 5, Fridge Freezers → Fridges 3, Fridge Freezers → Freezers 2, Freezers → Fridge Freezers 2). Đây cũng là 3 ngành có F1 thấp nhất (0,9762 – 0,9927). Ba ngành này có chung hãng (Liebherr, Bosch, Gorenje, Hotpoint, Smeg...) và mã model gần giống nhau, nên khi tiêu đề không có từ &quot;fridge&quot;/&quot;freezer&quot; thì mô hình chỉ còn dựa vào hãng và tiền tố mã model.</p>
+<p><strong>Kết luận:</strong></p>
+<ul>
+<li>Hơn một nửa lỗi đến từ tiêu đề chỉ có hãng + mã model. Với những mẫu này, ngay cả người đọc cũng không đoán được ngành nếu không tra mã, nên đây gần như là giới hạn của dữ liệu chỉ có tiêu đề.</li>
+<li>Khoảng 1/4 lỗi là nhãn gốc khả nghi (tiêu đề ghi rõ &quot;fridge freezer&quot;, &quot;refrigerator&quot;, &quot;xperia&quot;, &quot;hob&quot;...). Ở những mẫu này mô hình đoán hợp lý hơn nhãn, nên độ chính xác thực tế còn cao hơn con số 0,9929.</li>
+<li>Hướng cải thiện có thể làm: (1) chuẩn hóa các từ tiếng Đức/Pháp bị mất dấu (<code>k hlschrank</code> → fridge, <code>gefrier</code> → freezer, <code>frig rateur</code> → fridge) trước khi tạo TF-IDF; (2) bổ sung đặc trưng dung tích (<code>307l</code>, <code>122l 62l</code>): tiêu đề có hai mức dung tích thường là tủ lạnh kết hợp ngăn đông; (3) không cố sửa phần nhãn sai vì đó là nhiễu của dữ liệu gốc.</li>
+</ul>
+</div>
+<div class='cell'><h2>9. Thử chuẩn hóa từ tiếng Đức/Pháp bị mất dấu</h2>
+</div>
+<div class='cell'><div class='prompt'>In [2]:</div><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">run_experiment</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">common</span><span class="w"> </span><span class="kn">import</span> <span class="n">clean_title</span>
+
+<span class="c1"># Từ bị mất ký tự có dấu trong dữ liệu gốc -&gt; từ khóa tiếng Anh tương ứng</span>
+<span class="n">THAY</span> <span class="o">=</span> <span class="p">[(</span><span class="sa">r</span><span class="s1">'\bk hl\s?und\s?gefrierkombination\b'</span><span class="p">,</span> <span class="s1">'fridge freezer'</span><span class="p">),</span> <span class="p">(</span><span class="sa">r</span><span class="s1">'\bk hl gefrier'</span><span class="p">,</span> <span class="s1">'fridge freezer'</span><span class="p">),</span>
+        <span class="p">(</span><span class="sa">r</span><span class="s1">'\bk hlschrank\b'</span><span class="p">,</span> <span class="s1">'fridge'</span><span class="p">),</span> <span class="p">(</span><span class="sa">r</span><span class="s1">'\bk hlschr nke\b'</span><span class="p">,</span> <span class="s1">'fridge'</span><span class="p">),</span> <span class="p">(</span><span class="sa">r</span><span class="s1">'\bgefrierschrank\b'</span><span class="p">,</span> <span class="s1">'freezer'</span><span class="p">),</span>
+        <span class="p">(</span><span class="sa">r</span><span class="s1">'\bgefriertruhe\b'</span><span class="p">,</span> <span class="s1">'chest freezer'</span><span class="p">),</span> <span class="p">(</span><span class="sa">r</span><span class="s1">'\bk hl'</span><span class="p">,</span> <span class="s1">'kuehl'</span><span class="p">),</span>
+        <span class="p">(</span><span class="sa">r</span><span class="s1">'\bfrig rateur'</span><span class="p">,</span> <span class="s1">'fridge'</span><span class="p">),</span> <span class="p">(</span><span class="sa">r</span><span class="s1">'\bcong lateur'</span><span class="p">,</span> <span class="s1">'freezer'</span><span class="p">)]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">chuan_hoa</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">clean_title</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">THAY</span><span class="p">:</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">t</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">()</span>
+<span class="n">truoc</span><span class="p">,</span> <span class="n">sau</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">clean_title</span><span class="p">),</span> <span class="n">d</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">chuan_hoa</span><span class="p">)</span>
+<span class="n">doi</span> <span class="o">=</span> <span class="n">truoc</span> <span class="o">!=</span> <span class="n">sau</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Số tiêu đề bị thay đổi:'</span><span class="p">,</span> <span class="n">doi</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">doi</span><span class="p">]</span><span class="o">.</span><span class="n">category_label</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'truoc'</span><span class="p">:</span> <span class="n">truoc</span><span class="p">[</span><span class="n">doi</span><span class="p">],</span> <span class="s1">'sau'</span><span class="p">:</span> <span class="n">sau</span><span class="p">[</span><span class="n">doi</span><span class="p">]})</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+<pre class='out'>Số tiêu đề bị thay đổi: 1304
+category_label
+Fridges            576
+Fridge Freezers    512
+Freezers           213
+CPUs                 3
+Name: count, dtype: int64
+</pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>truoc</th>
+      <th>sau</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7881</th>
+      <td>amd ryzen threadripper 1950x 16x 3.40ghz ohne ...</td>
+      <td>amd ryzen threadripper 1950x 16x 3.40ghz ohne ...</td>
+    </tr>
+    <tr>
+      <th>7913</th>
+      <td>amd ryzen threadripper 1920x 12x 3.50ghz ohne ...</td>
+      <td>amd ryzen threadripper 1920x 12x 3.50ghz ohne ...</td>
+    </tr>
+    <tr>
+      <th>8114</th>
+      <td>intel core i7 6700k skylake 4 kerne 4x 4.00ghz...</td>
+      <td>intel core i7 6700k skylake 4 kerne 4x 4.00ghz...</td>
+    </tr>
+    <tr>
+      <th>24203</th>
+      <td>neff gefrierschrank g 120 cooldeluxe g8120x0 e...</td>
+      <td>neff freezer g 120 cooldeluxe g8120x0 eek a</td>
+    </tr>
+    <tr>
+      <th>24224</th>
+      <td>liebherr gp 2033 20 a gefrierschrank standger ...</td>
+      <td>liebherr gp 2033 20 a freezer standger t 125cm...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<div class='cell'><div class='prompt'>In [3]:</div><div class="highlight"><pre><span></span><span class="c1"># Tạm thay hàm làm sạch bằng hàm có chuẩn hóa, chạy xong trả lại như cũ</span>
+<span class="n">run_experiment</span><span class="o">.</span><span class="n">clean_title</span> <span class="o">=</span> <span class="n">chuan_hoa</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">res_n</span><span class="p">,</span> <span class="n">pipe_n</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="s1">'danh'</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">'svc'</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'hybrid'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">'C'</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">},</span>
+                        <span class="n">char_ngram</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">cv</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exp_name</span><span class="o">=</span><span class="s1">'norm_de_fr'</span><span class="p">,</span> <span class="n">show_report</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">run_experiment</span><span class="o">.</span><span class="n">clean_title</span> <span class="o">=</span> <span class="n">clean_title</span>
+</pre></div>
+
+<pre class='out'>[danh_20261115_151800] svc/hybrid {&#x27;C&#x27;: 3.0} split=strat
+   cv_f1_macro_mean             0.9910
+   cv_f1_macro_std              0.0014
+   cv_time_s                    44.6221
+   train_time_s                 10.1974
+   test_accuracy                0.9935
+   test_precision_macro         0.9932
+   test_recall_macro            0.9929
+   test_f1_macro                0.9930
+   test_f1_weighted             0.9935
+   f1_Fridges                   0.9847
+   f1_Freezers                  0.9762
+   f1_Fridge_Freezers           0.9932
+→ Đã ghi vào experiments/danh/experiment_log.csv. Hãy mở file và điền cột nhan_xet.
+</pre>
+</div>
+<div class='cell'><p><strong>Kết luận mục 9 (run danh_20261115_151800):</strong></p>
+<ul>
+<li>Bước chuẩn hóa đổi 1.304 tiêu đề (gần như toàn bộ thuộc 3 ngành làm lạnh), ví dụ <code>gefrierschrank</code> → <code>freezer</code>, <code>k hlschrank</code> → <code>fridge</code>.</li>
+<li>Kết quả gần như không đổi: CV 0.9910 ± 0.0014 so với 0.9909 ± 0.0013, Test 0.9930 so với 0.9929. Chênh lệch 0.0001 nhỏ hơn nhiều so với độ lệch chuẩn CV, nên coi như không cải thiện; F1 Freezers giữ nguyên 0.9762.</li>
+<li>Lý do: n-gram ký tự (2,4) đã học được các mảnh <code>k hl</code>, <code>gefrier</code>, <code>frig</code> trực tiếp từ dữ liệu huấn luyện, nên dịch sang tiếng Anh không thêm thông tin mới. Các lỗi còn lại chủ yếu là tiêu đề chỉ có mã model và nhãn gốc khả nghi (mục 8.1), chuẩn hóa từ không giải quyết được.</li>
+<li><strong>Quyết định:</strong> không đưa bước chuẩn hóa vào mô hình cuối, giữ hàm <code>clean_title</code> như cũ cho đơn giản.</li>
+</ul>
+</div>
+<div class='cell'><h2>10. Đường cong học: mô hình cần bao nhiêu dữ liệu?</h2>
+</div>
+<div class='cell'><div class='prompt'>In [2]:</div><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearSVC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">f1_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">run_experiment</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_features</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">();</span> <span class="n">df</span><span class="p">[</span><span class="s1">'clean'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">clean_title</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">'clean'</span><span class="p">,</span> <span class="s1">'merchant_id'</span><span class="p">]],</span> <span class="n">df</span><span class="o">.</span><span class="n">category_label</span><span class="o">.</span><span class="n">values</span>
+<span class="n">Xtr</span><span class="p">,</span> <span class="n">Xte</span><span class="p">,</span> <span class="n">ytr</span><span class="p">,</span> <span class="n">yte</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">kq</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">ti_le</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]:</span>
+    <span class="c1"># Lấy ti_le phần của tập Train (giữ tỉ lệ các ngành); tập Test giữ nguyên 7.063 mẫu</span>
+    <span class="k">if</span> <span class="n">ti_le</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">Xs</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">Xtr</span><span class="p">,</span> <span class="n">ytr</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">ti_le</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">ytr</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">Xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">Xtr</span><span class="p">,</span> <span class="n">ytr</span>
+    <span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">'feat'</span><span class="p">,</span> <span class="n">build_features</span><span class="p">(</span><span class="s1">'hybrid'</span><span class="p">,</span> <span class="n">char_ngram</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))),</span> <span class="p">(</span><span class="s1">'clf'</span><span class="p">,</span> <span class="n">LinearSVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">3.0</span><span class="p">))])</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span> <span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">);</span> <span class="n">tg</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t</span>
+    <span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">pipe</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xte</span><span class="p">),</span> <span class="n">average</span><span class="o">=</span><span class="s1">'macro'</span><span class="p">)</span>
+    <span class="n">dong</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">ti_le</span><span class="o">=</span><span class="n">ti_le</span><span class="p">,</span> <span class="n">n_train</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">),</span> <span class="n">test_f1_macro</span><span class="o">=</span><span class="n">f1</span><span class="p">,</span> <span class="n">train_time_s</span><span class="o">=</span><span class="n">tg</span><span class="p">)</span>
+    <span class="n">log_generic</span><span class="p">(</span><span class="s1">'danh'</span><span class="p">,</span> <span class="s1">'learning_curve'</span><span class="p">,</span> <span class="n">dong</span><span class="p">)</span>
+    <span class="n">kq</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dong</span><span class="p">)</span>
+
+<span class="n">lc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">kq</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lc</span><span class="o">.</span><span class="n">n_train</span><span class="p">,</span> <span class="n">lc</span><span class="o">.</span><span class="n">test_f1_macro</span><span class="p">,</span> <span class="s1">'o-'</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">lc</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">test_f1_macro</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">n_train</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">test_f1_macro</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">'offset points'</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">'Số mẫu huấn luyện'</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">'Macro-F1 trên tập Test'</span><span class="p">,</span>
+       <span class="n">title</span><span class="o">=</span><span class="s1">'Đường cong học – hybrid char (2,4), LinearSVC C=3'</span><span class="p">)</span>
+<span class="n">save_fig</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="s1">'danh_learning_curve'</span><span class="p">,</span> <span class="n">notebook</span><span class="o">=</span><span class="s1">'05_Danh_SVM_DacTrung.ipynb'</span><span class="p">,</span> <span class="n">member</span><span class="o">=</span><span class="s1">'danh'</span><span class="p">,</span>
+         <span class="n">cell</span><span class="o">=</span><span class="s1">'Mục 10'</span><span class="p">,</span> <span class="n">y_nghia</span><span class="o">=</span><span class="s1">'(tự viết)'</span><span class="p">)</span>
+<span class="n">lc</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+<pre class='out'>Đã lưu danh_learning_curve.png (ghi nguồn vào figures/FIGURE_INDEX.csv)
+</pre>
+<img src='data:image/png;base64,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0M02ZswY7R/0I65x9uzZjXLlymkf4ZiTJUtmXLp0ybKP5cuXGzly5ND29evXG5kzZzZq1apl9OzZ0+jQoYOROnVqY8OGDbr85cuX9Zxfeuklo0mTJrouwD42b96s/584cUK3gXb0C/aNazZnzpxIz+vQoUN6T+B6dO/e3fD09DTee+89XdZWH6OvsO+aNWsagwYNMgoVKmS88cYblv1UrlzZqF27tt6Dw4cPj3T/8+fPN6pUqfLcPu/Ro4fRvn375y7z448/GkWKFDEePnyo13Ht2rXhlu/WrZsxePBgu68t+nn37t2RLv/2229btoXntXz58nqv4hlDH+B64tkCDx480OcV13To0KFG8eLFjZYtW1q2u2TJEr3GOD+cZ9q0aY2ffvopyusdGhqq1/f99983goODIz2++/fvGx4eHsaOHTss7Xv37tV3w927d/W3smXLGgsWLHhmfWwT74/Itr1y5UqjQIECke4T94L5bOG+wbMY8fPKK69E2f87d+40UqVKZQQGBtp9jZwJCnonBC/satWq6QsCgtv8HD58WAWVu7u7vvijEvR4iYPff//dyJAhg3Hnzh39HhYWZrRp00ZfRACCHtvCdgAEJoTv999/r98hWPEyNh/qgIAAI1euXFEK+hEjRqjANAU7Bgyvv/66cfHiRd02XvqLFi2yXDG8sCA48LIDEPSTJ0+2tJsCGED4ubm5Gfv377e0Dxs2zKag37Rpk2V5CFgIHADhiHM1B0QAx4oBSGR9ByAY161b90J3HAQ9Bhfm4OTMmTN6DuYABAOSTz75xLKPV1991Rg1apR+h6DHsmvWrLG0494wB36moMd1t8Za0Ddv3lwFhsnx48d1cBGVoMfgEP1sgv5/88039Z4wBX1UfYzrPnfuXMu6EBAYvJkva9xbGDw8j5EjR+pgLSogbCEIDx48GOUyEF7ogy1btugykQn6iRMnat/YiyOCHgLKvM/wDOG7Kaw/+ugjHcjg2QQYLKdMmdJyDdG3uO4muH8w6AJRXe9t27YZOXPm1AEaBoS7du165rQwiMWA2QTPBe5/gGPBMfz555/2doeCc8H9agu8H27evPnMB+cekc8//1yf22zZsoUbmCQ16KN3QmASgykan5QpU1o++A5zLUxq1ia3qNi2bZuadjNnzqyLYJ3u3bur+dsEQUWmqR5mZATcXLt2TZthIocp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'>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ti_le</th>
+      <th>n_train</th>
+      <th>test_f1_macro</th>
+      <th>train_time_s</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.05</td>
+      <td>1412</td>
+      <td>0.9530</td>
+      <td>0.2171</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.10</td>
+      <td>2824</td>
+      <td>0.9664</td>
+      <td>0.3554</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.25</td>
+      <td>7062</td>
+      <td>0.9789</td>
+      <td>0.9022</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.50</td>
+      <td>14124</td>
+      <td>0.9885</td>
+      <td>1.9087</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.75</td>
+      <td>21186</td>
+      <td>0.9924</td>
+      <td>2.6659</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.00</td>
+      <td>28248</td>
+      <td>0.9929</td>
+      <td>3.3658</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<div class='cell'><p><strong>Kết luận mục 10 (17/11, run danh_20261117_072153 → _072204, nhật ký <code>experiments/danh/learning_curve.csv</code>):</strong></p>
+<ul>
+<li>F1 tăng nhanh ở đoạn đầu: 5% dữ liệu (1.412 mẫu) đạt 0.9530, 25% (7.062 mẫu) đạt 0.9789, 50% đạt 0.9885.</li>
+<li>Từ 75% trở đi gần như bão hòa: 0.9924 → 0.9929 (+0.0005, nhỏ hơn độ lệch chuẩn CV 0.0013).</li>
+<li>Chỉ với 25% dữ liệu, LinearSVC trên TF-IDF đã bằng XGBoost dùng toàn bộ dữ liệu (0.9789): mô hình tuyến tính trên đặc trưng thưa hiệu quả dữ liệu hơn nhiều.</li>
+<li>Thêm dữ liệu cùng loại khó tăng thêm; phần lỗi còn lại cần xử lý tiêu đề chỉ có mã model và nhãn nhiễu (mục 8.1), không phải thêm mẫu.</li>
+</ul>
+</div>
+</body></html>
