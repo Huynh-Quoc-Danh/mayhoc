@@ -9,6 +9,7 @@
 | 14/11 | Chỉnh XGBoost: xgb_d3 (nhan_20261114_170832), xgb_d6 (nhan_20261114_170957), xgb_d9 (nhan_20261114_171244), xgb_lr005 (nhan_20261114_171419), xgb_lr03 (nhan_20261114_171516), xgb_svd150 (nhan_20261114_171811). Vẽ hình so sánh 3 mô hình cây (mục 7 notebook 06, nhan_so_sanh_mo_hinh_cay.png) | depth 3 = 0.969, depth 6 = 0.9771, depth 9 = 0.9778; lr 0.05 = 0.9757, lr 0.3 = 0.9776; svd 150 = 0.9783 (tốt nhất) | XGBoost hơn Random Forest (0.9732) khoảng 0,5 điểm nhưng vẫn thua SVM (0.9929). Cây sâu hơn thì tốt hơn, lr 0.1 là vừa. Mai làm phân tích lỗi (mục 4). |
 | 15/11 | Quét số cây XGBoost: xgb_n100 (nhan_20261115_180610), xgb_n400 (nhan_20261115_180737). CV 5-fold: cv_xgb_best (nhan_20261115_181114). Làm mục 8 notebook 06: bảng và hình tổng hợp cả nhóm | 100 cây = 0.9761, 400 cây = 0.9789 (tốt nhất). CV = 0.9754 ± 0.0015. Xếp hạng cả nhóm: SVM 0.9930 > LR 0.9909 > NB 0.9869 > CNB 0.9857 > XGB 0.9789 > RF 0.9732 > DT 0.9408 | Thêm cây có giúp. XGBoost vẫn thua SVM khoảng 1,5 điểm kể cả khi CV. 3 ngành làm lạnh khó với mọi mô hình. |
 | 16/11 | Họp nhóm 1: trình bày phần mô hình cây (XGBoost tốt nhất 0.9789, CV 0.9754, xếp hạng 7 mô hình). Mục 9 notebook 06: chạy lại svm_doi_chieu (nhan_20261116_160058) và xgb_doi_chieu (nhan_20261116_160135), so lỗi, phân loại 30 mẫu (loi_xgb_30_mau.csv), vẽ hình đầu vào đầu ra | SVM sai 47, XGBoost sai 147. Cả hai sai 38, chỉ XGBoost sai 109, chỉ SVM sai 9. Trong 30 mẫu: chỉ có mã model 18, có từ khóa mà vẫn sai 5, tiếng Đức lỗi dấu 6, nhãn sai 1 | XGBoost thua SVM chủ yếu vì SVD làm mất mã model. Nhầm giữa 3 ngành lạnh vẫn nhiều nhất. |
+| 17/11 | Vẽ sơ đồ XGBoost bằng draw.io (docs/hinh_ve_tay/nhan_so_do_xgboost.jpg): quy trình và so sánh boosting với bagging. Viết mục 10 notebook 06 tổng kết nhánh mô hình cây. Bắt đầu báo cáo report/nhap/BaoCao_Nhan.docx, viết xong 6.1 và 6.2 | Bảng 6.1: SVM 0.9930 > LR 0.9909 > NB 0.9869 > CNB 0.9857 > XGB 0.9789 > RF 0.9732 > DT 0.9408, có run_id từng dòng | Freezers chỉ thấp nhất ở SVM, LR, CNB; mô hình cây và NB thì Fridges thấp nhất. Mai viết tiếp 6.3, 6.4 và mục 4.3. |
 
 ## Câu hỏi tự trả lời
 
@@ -44,3 +45,7 @@ Có giúp: 100 cây được 0.9761, 200 cây 0.9778, 400 cây 0.9789. Thời gi
 **16/11 – Vì sao XGBoost thua SVM? Lỗi thêm nằm ở ngành nào, do đâu?**
 
 Trên cùng tập test, XGBoost sai 147 mẫu, SVM sai 47. Gần hết mẫu SVM sai thì XGBoost cũng sai, còn XGBoost sai thêm 109 mẫu. Khoảng một nửa số lỗi thêm là nhầm qua lại giữa Fridges, Freezers, Fridge Freezers. Em đọc 30 mẫu thì hơn một nửa là tiêu đề chỉ có hãng với mã model. SVM dùng n-gram ký tự nên nhận ra được mã model, còn XGBoost chỉ thấy 100 chiều SVD nên mấy mã hiếm bị nén mất.
+
+**17/11 – Khi nào nên dùng mô hình cây?**
+
+Mô hình cây hợp với dữ liệu dạng bảng có ít cột số liệu như giá, kích thước, hoặc khi cần biết đặc trưng nào quan trọng. Với dữ liệu chữ ngắn có hàng chục nghìn cột thưa như bài này thì phải nén SVD mới chạy được, nén vậy mất thông tin nên thua mô hình tuyến tính khoảng 1,5 điểm mà còn chạy lâu hơn.
