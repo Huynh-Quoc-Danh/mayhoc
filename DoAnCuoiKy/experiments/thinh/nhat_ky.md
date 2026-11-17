@@ -65,7 +65,7 @@
 - **Kết quả chính:** K-Means SVD 50 tốt nhất với NMI đạt 0.732; DBSCAN tối ưu đạt NMI 0.554; HDBSCAN tối ưu đạt NMI 0.533. Cả hai mô hình mật độ đều kém hơn K-Means do tỷ lệ nhiễu cao và mật độ không đồng đều.
 - **Nhận xét:** Các thuật toán dựa trên mật độ không phù hợp bằng K-Means trên tập dữ liệu văn bản này do đặc thù không gian vector thưa và phân bố phức tạp.
 - **Ngày mai:** Tiếp tục thực hiện t-SNE (mục 4) để trực quan hóa không gian giảm chiều.
-## Nhật ký ngày 16/11/2026
+## Nhật ký ngày 17/11/2026
 - **Đã làm:** Tham gia họp nhóm 1 trình bày kết quả phân cụm; thực hiện t-SNE trực quan hóa (mục 4); lập bảng độ thuần và biểu đồ nhiệt phân tích thành phần cụm - ngành (mục 5); chính thức chốt thuật toán K-Means (K=10, SVD 50).
 - **Kết quả chính:** K-Means đạt hiệu suất tối ưu (NMI 0.732); các ngành điện tử tách rõ rệt, nhóm thiết bị lạnh (Fridges/Freezers) có sự chồng lấn.
 - **Nhận xét:** t-SNE và bảng crosstab giúp giải thích rõ nguyên nhân thành công và hạn chế của K-Means trên từng nhóm ngành cụ thể.
