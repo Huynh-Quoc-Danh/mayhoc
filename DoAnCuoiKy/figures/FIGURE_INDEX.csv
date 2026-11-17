@@ -13,3 +13,6 @@ thinh_so_sanh_thuat_toan.png,07_Thinh_PhanCum.ipynb,Mục 3 - so sánh,thinh,202
 nhan_dau_vao_dau_ra.png,06_Nhan_Cay_Boosting_PhanTichLoi.ipynb,Mục 9,nhan,2026-11-16 16:08:00,"8 ví dụ tiêu đề và dự đoán: 2 mẫu cả hai đúng, 4 mẫu chỉ XGBoost sai, 2 mẫu cả hai sai. XGBoost hay sai ở tiêu đề chỉ có mã model."
 danh_learning_curve.png,05_Danh_SVM_DacTrung.ipynb,Mục 10,danh,2026-11-17 07:22:05,"Macro-F1 trên tập Test theo số mẫu huấn luyện của mô hình cuối: tăng nhanh đến khoảng 14 nghìn mẫu (0.9885), sau 75% dữ liệu gần như bão hòa (0.9924 lên 0.9929); với 25% dữ liệu SVM đã đạt 0.9789, bằng XGBoost dùng toàn bộ dữ liệu."
 loc_dac_trung_quan_trong.png,04_Loc_TienXuLy_NB_LR.ipynb,Mục 10,loc,2026-11-16 23:07:50,"8 đặc trưng có trọng số lớn nhất của LR cho mỗi ngành: CPUs, Dishwashers dựa vào từ khóa; tủ lạnh dựa vào mảnh mã model KG, KI"
+thinh_tsne_nganh_vs_cum.png,07_Thinh_PhanCum.ipynb,Mục 4 - t-SNE,thinh,2026-11-17 07:38:44,"Biểu đồ t-SNE so sánh trực quan không gian phân bố giữa nhãn ngành thật và cụm K-Means."
+thinh_cum_vs_nganh.png,07_Thinh_PhanCum.ipynb,Mục 5 - cụm vs ngành,thinh,2026-11-17 07:41:51,"Bản đồ nhiệt thể hiện tỉ lệ phần trăm thành phần ngành thật bên trong từng cụm K-Means."
+
