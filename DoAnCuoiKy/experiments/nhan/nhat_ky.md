@@ -10,6 +10,7 @@
 | 15/11 | Quét số cây XGBoost: xgb_n100 (nhan_20261115_180610), xgb_n400 (nhan_20261115_180737). CV 5-fold: cv_xgb_best (nhan_20261115_181114). Làm mục 8 notebook 06: bảng và hình tổng hợp cả nhóm | 100 cây = 0.9761, 400 cây = 0.9789 (tốt nhất). CV = 0.9754 ± 0.0015. Xếp hạng cả nhóm: SVM 0.9930 > LR 0.9909 > NB 0.9869 > CNB 0.9857 > XGB 0.9789 > RF 0.9732 > DT 0.9408 | Thêm cây có giúp. XGBoost vẫn thua SVM khoảng 1,5 điểm kể cả khi CV. 3 ngành làm lạnh khó với mọi mô hình. |
 | 16/11 | Họp nhóm 1: trình bày phần mô hình cây (XGBoost tốt nhất 0.9789, CV 0.9754, xếp hạng 7 mô hình). Mục 9 notebook 06: chạy lại svm_doi_chieu (nhan_20261116_160058) và xgb_doi_chieu (nhan_20261116_160135), so lỗi, phân loại 30 mẫu (loi_xgb_30_mau.csv), vẽ hình đầu vào đầu ra | SVM sai 47, XGBoost sai 147. Cả hai sai 38, chỉ XGBoost sai 109, chỉ SVM sai 9. Trong 30 mẫu: chỉ có mã model 18, có từ khóa mà vẫn sai 5, tiếng Đức lỗi dấu 6, nhãn sai 1 | XGBoost thua SVM chủ yếu vì SVD làm mất mã model. Nhầm giữa 3 ngành lạnh vẫn nhiều nhất. |
 | 17/11 | Vẽ sơ đồ XGBoost bằng draw.io (docs/hinh_ve_tay/nhan_so_do_xgboost.jpg): quy trình và so sánh boosting với bagging. Viết mục 10 notebook 06 tổng kết nhánh mô hình cây. Bắt đầu báo cáo report/nhap/BaoCao_Nhan.docx, viết xong 6.1 và 6.2 | Bảng 6.1: SVM 0.9930 > LR 0.9909 > NB 0.9869 > CNB 0.9857 > XGB 0.9789 > RF 0.9732 > DT 0.9408, có run_id từng dòng | Freezers chỉ thấp nhất ở SVM, LR, CNB; mô hình cây và NB thì Fridges thấp nhất. Mai viết tiếp 6.3, 6.4 và mục 4.3. |
+| 18/11 | Viết nốt báo cáo report/nhap/BaoCao_Nhan.docx: mục 4.3 (DT, RF, XGBoost, bagging vs boosting, bảng tinh chỉnh) và 6.3-6.5 (47 lỗi mô hình cuối, so lỗi SVM 47 / XGBoost 147, tổng kết). Sửa sơ đồ draw.io: TF-IDF khoảng 90.000 cột chứ không phải 68.000, bỏ tên trên tiêu đề hình. Danh chốt dùng draw.io nên không vẽ tay | Báo cáo đủ 4.3 và 6.1-6.5, không còn chữ xám, số nào cũng có run_id | Lỗi của mô hình cuối chủ yếu do dữ liệu (mã model, nhãn sai, tiếng Đức mất dấu), đổi mô hình khó cải thiện thêm. |
 
 ## Câu hỏi tự trả lời
 
@@ -49,3 +50,7 @@ Trên cùng tập test, XGBoost sai 147 mẫu, SVM sai 47. Gần hết mẫu SVM
 **17/11 – Khi nào nên dùng mô hình cây?**
 
 Mô hình cây hợp với dữ liệu dạng bảng có ít cột số liệu như giá, kích thước, hoặc khi cần biết đặc trưng nào quan trọng. Với dữ liệu chữ ngắn có hàng chục nghìn cột thưa như bài này thì phải nén SVD mới chạy được, nén vậy mất thông tin nên thua mô hình tuyến tính khoảng 1,5 điểm mà còn chạy lâu hơn.
+
+**18/11 – Lỗi còn lại của mô hình cuối chủ yếu do đâu?**
+
+Mô hình cuối (LinearSVC) chỉ sai 47 trên 7.063 mẫu. Hơn một nửa là tiêu đề chỉ có hãng với mã model, người đọc cũng khó đoán. Khoảng 1/4 là nhãn gốc có vẻ sai, ở mấy mẫu này mô hình đoán còn hợp lý hơn nhãn. Phần còn lại là tiếng Đức bị mất dấu và vài phụ kiện lạ. Nên muốn tốt hơn nữa thì phải có thêm thông tin sản phẩm hoặc làm sạch nhãn, chứ đổi mô hình khó tăng thêm.
