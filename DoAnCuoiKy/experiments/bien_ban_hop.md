@@ -1,7 +1,8 @@
 # Biên bản họp nhóm
 
-## Họp 1 – 16/11/2026
-- Thời gian: … – Hình thức: … – Có mặt: …
+## Họp 1 – 18/11/2026 (họp qua tin nhắn nhóm Zalo, dời từ 16/11)
+- Thời gian: khoảng 21:35 ngày 18/11/2026 – Hình thức: nhóm trưởng gửi số liệu và 4 đề xuất vào nhóm Zalo, các thành viên trả lời bằng tin nhắn – Tham gia: Danh, Lộc, Nhân, Thịnh
+- Lý do dời: chưa sắp xếp được lịch họp ngày 16/11 (laptop nhóm trưởng bị hỏng).
 
 Cấu hình tốt nhất của mỗi người (số liệu lấy từ nhật ký thí nghiệm):
 
@@ -14,10 +15,11 @@ Cấu hình tốt nhất của mỗi người (số liệu lấy từ nhật ký
 | Thịnh | K-Means | SVD 50, K=10 | thinh_20261113_214111 | NMI 0.7318; ARI 0.623 |
 | Thịnh | DBSCAN / HDBSCAN | eps 0.5, min_samples 5 / min_cluster_size 100 | thinh_20261115_232258 / thinh_20261115_232435 | NMI 0.554 / 0.533 |
 
-- Ý kiến / tranh luận: …
-- **Quyết định mô hình phân loại cuối:** …
-- **Quyết định thuật toán phân cụm:** …
-- Việc tiếp theo (đến 19/11): …
+- Ý kiến: cả 4 thành viên đồng ý cả 4 đề xuất, không có ý kiến khác.
+- **Quyết định mô hình phân loại cuối:** LinearSVC C=3, đặc trưng hybrid TF-IDF word (1,2) + char (2,4) (danh_20261113_170944) – 4/4 đồng ý.
+- **Quyết định thuật toán phân cụm:** K-Means trên SVD 50 chiều, K=10 (thinh_20261113_214111) – 4/4 đồng ý.
+- Việc tiếp theo: báo cáo viết chung trên Google Docs, mỗi người viết đúng chương của mình theo docs/DAN_Y_BAO_CAO.md, xong nháp trước 20/11; họp 2 ngày 19/11 để đọc chéo (Danh đọc Ch.2–3 của Lộc, Lộc đọc Ch.6 của Nhân, Nhân đọc Ch.7 của Thịnh, Thịnh đọc Ch.5 của Danh).
+- Minh chứng: ảnh chụp tin nhắn nhóm Zalo – docs/bien_ban/hop1_zalo.png (nhóm trưởng bổ sung).
 
 ## Họp 2 – 19/11/2026 (đọc chéo báo cáo)
 
