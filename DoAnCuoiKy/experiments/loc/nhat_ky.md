@@ -56,3 +56,9 @@
 - **Họp nhóm 1:** trình bày kết quả NB/LR (LR C=100: Test 0.9909, CV 0.9875, Group 0.9851; NB: CV 0.9861), balanced và ComplementNB không giúp, đồng ý chọn SVM làm mô hình cuối.
 - **Nhóm quyết định:** chọn SVM hybrid char (2,4), C=3 làm mô hình cuối (CV 0.9909, Group 0.9875); LR C=100 là mô hình tuyến tính tốt thứ hai, dùng để giải thích đặc trưng trong báo cáo.
 - **Ngày mai:** theo phân công của nhóm.
+
+## 17/11/2026 – Lộc
+- Notebook 04 mục 11: bảng tổng kết 6 run (cv_nb_best, cv_lr_best, nb/lr_best_group, cnb_h24_a003, lr_h24_C100_bal) + đoạn tổng kết; chỉ đọc nhật ký, không chạy thí nghiệm mới.
+- **Kết luận nhánh NB/LR:** LR C=100 (CV 0.9875, Test 0.9909, Group 0.9851) > NB alpha=0.03 (CV 0.9861, Test 0.9869, Group 0.9819); kém SVM 0.20–0.60 điểm Test, đổi lại NB nhanh nhất (~1,2 giây), LR dễ giải thích hệ số.
+- Báo cáo report/nhap/BaoCao_Loc.docx: viết xong Chương 2 (2.1–2.5, 5 hình vẽ lại bằng draw.io từ dữ liệu thật), Chương 3 (3.1–3.4) và mục 4.1; mọi số liệu ghi run_id / nguồn.
+- **Ngày mai:** rà lại báo cáo theo góp ý của nhóm ở họp 2 (19/11).
