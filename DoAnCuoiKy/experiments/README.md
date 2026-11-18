@@ -7,7 +7,7 @@ experiments/
     cluster_log.csv      # (Thịnh) tự sinh bởi log_generic
     runs/                # JSON chi tiết từng lần chạy + HTML xuất notebook theo ngày
     nhat_ky.md           # nhật ký làm việc hằng ngày – tự viết
-  bien_ban_hop.md        # biên bản họp nhóm (16/11, 19/11, 21/11)
+  quyet_dinh_nhom.md        # Quyết định của nhóm (16/11, 19/11, 21/11)
 ```
 
 ## Các cột tự động
