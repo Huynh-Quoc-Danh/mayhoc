@@ -3,6 +3,7 @@
 > Lưu ý: tên file nén được đặt đúng theo đề (`challenge1_titanic_...`). Nội dung bài làm là cuộc thi
 > **Music Genre Classification**: https://www.kaggle.com/competitions/shai-music-genre-classification
 
+**Bài nộp:** Tuan10/TH10 – Bài tập lớn 15%
 **Nhóm trưởng / Người nộp:** Huỳnh Quốc Danh – MSSV 3124411050 – Trường Đại học Sài Gòn
 **Tài liệu tham khảo:** V. Chugani, *The Beginner's Guide to Data Science* và *Next-Level Data Science* (MachineLearningMastery, 2024)
 
