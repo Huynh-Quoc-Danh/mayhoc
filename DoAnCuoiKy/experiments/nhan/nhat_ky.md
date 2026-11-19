@@ -11,6 +11,7 @@
 | 16/11 | Họp nhóm 1: trình bày phần mô hình cây (XGBoost tốt nhất 0.9789, CV 0.9754, xếp hạng 7 mô hình). Mục 9 notebook 06: chạy lại svm_doi_chieu (nhan_20261116_160058) và xgb_doi_chieu (nhan_20261116_160135), so lỗi, phân loại 30 mẫu (loi_xgb_30_mau.csv), vẽ hình đầu vào đầu ra | SVM sai 47, XGBoost sai 147. Cả hai sai 38, chỉ XGBoost sai 109, chỉ SVM sai 9. Trong 30 mẫu: chỉ có mã model 18, có từ khóa mà vẫn sai 5, tiếng Đức lỗi dấu 6, nhãn sai 1 | XGBoost thua SVM chủ yếu vì SVD làm mất mã model. Nhầm giữa 3 ngành lạnh vẫn nhiều nhất. |
 | 17/11 | Vẽ sơ đồ XGBoost bằng draw.io (docs/hinh_ve_tay/nhan_so_do_xgboost.jpg): quy trình và so sánh boosting với bagging. Viết mục 10 notebook 06 tổng kết nhánh mô hình cây. Bắt đầu báo cáo report/nhap/BaoCao_Nhan.docx, viết xong 6.1 và 6.2 | Bảng 6.1: SVM 0.9930 > LR 0.9909 > NB 0.9869 > CNB 0.9857 > XGB 0.9789 > RF 0.9732 > DT 0.9408, có run_id từng dòng | Freezers chỉ thấp nhất ở SVM, LR, CNB; mô hình cây và NB thì Fridges thấp nhất. Mai viết tiếp 6.3, 6.4 và mục 4.3. |
 | 18/11 | Viết nốt báo cáo report/nhap/BaoCao_Nhan.docx: mục 4.3 (DT, RF, XGBoost, bagging vs boosting, bảng tinh chỉnh) và 6.3-6.5 (47 lỗi mô hình cuối, so lỗi SVM 47 / XGBoost 147, tổng kết). Sửa sơ đồ draw.io: TF-IDF khoảng 90.000 cột chứ không phải 68.000, bỏ tên trên tiêu đề hình. Danh chốt dùng draw.io nên không vẽ tay | Báo cáo đủ 4.3 và 6.1-6.5, không còn chữ xám, số nào cũng có run_id | Lỗi của mô hình cuối chủ yếu do dữ liệu (mã model, nhãn sai, tiếng Đức mất dấu), đổi mô hình khó cải thiện thêm. |
+| 19/11 | Sửa báo cáo BaoCao_Nhan.docx: đổi chú thích thành Hình 4.3, 4.4, Bảng 4.2, thêm câu giải thích 2 bộ TF-IDF (cây dùng word + char 3-5 khoảng 90.293 cột, SVM dùng char 2-4 có 68.324 cột). Bắt đầu chép 4.3 và Ch.6 lên Google Docs, mai làm tiếp. Tạo file mô hình cho web demo (model_demo, nhan_20261119_232556), chạy streamlit và quay video demo_nhom06, đã gửi link Drive cho Danh | Mô hình demo ra 0.9929. Video có 3 tiêu đề đúng và 1 tiêu đề sai (siemens sf65) | Chưa đọc chéo Ch.7 vì Thịnh chưa viết. Mai: viết tiếp Docs và đọc chéo Ch.7. |
 
 ## Câu hỏi tự trả lời
 
@@ -54,3 +55,7 @@ Mô hình cây hợp với dữ liệu dạng bảng có ít cột số liệu n
 **18/11 – Lỗi còn lại của mô hình cuối chủ yếu do đâu?**
 
 Mô hình cuối (LinearSVC) chỉ sai 47 trên 7.063 mẫu. Hơn một nửa là tiêu đề chỉ có hãng với mã model, người đọc cũng khó đoán. Khoảng 1/4 là nhãn gốc có vẻ sai, ở mấy mẫu này mô hình đoán còn hợp lý hơn nhãn. Phần còn lại là tiếng Đức bị mất dấu và vài phụ kiện lạ. Nên muốn tốt hơn nữa thì phải có thêm thông tin sản phẩm hoặc làm sạch nhãn, chứ đổi mô hình khó tăng thêm.
+
+**19/11 – Vì sao mô hình cây và SVM dùng hai số cột TF-IDF khác nhau?**
+
+Hai bên dùng hai bộ đặc trưng khác nhau. SVM và LR dùng từ (1,2) cộng n-gram ký tự (2,4), ra 68.324 cột. Mô hình cây dùng từ (1,2) cộng n-gram ký tự (3,5), ra khoảng 90.293 cột, rồi mới nén bằng SVD còn 100-150 chiều. Nên hai con số đều đúng, chỉ cần ghi rõ bộ nào trong báo cáo để thầy không thấy mâu thuẫn.

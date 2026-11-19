@@ -1,0 +1,8 @@
+[2026-11-19 23:25:51] Bắt đầu: member=nhan model=svc features=hybrid params={'C': 3.0} split=strat cv=False
+[2026-11-19 23:25:52] Đọc dữ liệu: 35311 tiêu đề, 10 ngành
+[2026-11-19 23:25:52] Chia dữ liệu (strat): Train 28248, Test 7063
+[2026-11-19 23:25:55] Huấn luyện trên toàn bộ Train: 3.5s
+[2026-11-19 23:25:56] Test: Macro-F1 0.9929, Accuracy 0.9933, sai 47/7063 mẫu
+[2026-11-19 23:25:56] run_id = nhan_20261119_232556 (đã thêm 1 dòng vào experiments/nhan/experiment_log.csv)
+[2026-11-19 23:25:56] Đã lưu mô hình: models/nhan_20261119_232556.joblib
+[2026-11-19 23:25:57] Đã lưu thư mục kết quả: experiments\nhan\runs\nhan_20261119_232556

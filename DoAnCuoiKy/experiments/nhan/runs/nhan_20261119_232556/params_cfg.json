@@ -1,0 +1,28 @@
+{
+ "run_id": "nhan_20261119_232556",
+ "member": "nhan",
+ "ten_thi_nghiem": "model_demo",
+ "git_commit": "2b1ef2c",
+ "du_lieu": "data/pricerunner_aggregate.csv",
+ "random_state": 42,
+ "n_train": 28248,
+ "n_test": 7063,
+ "cv_folds": 0,
+ "model": "svc",
+ "features": "hybrid",
+ "params": {
+  "C": 3.0
+ },
+ "split": "strat",
+ "word_ngram": [
+  1,
+  2
+ ],
+ "char_ngram": [
+  2,
+  4
+ ],
+ "min_df": 2,
+ "svd": null,
+ "model_file": "models/nhan_20261119_232556.joblib (không đưa lên GitHub)"
+}
