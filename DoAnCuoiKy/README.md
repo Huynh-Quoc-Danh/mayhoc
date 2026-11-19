@@ -45,7 +45,7 @@ X = pd.DataFrame({"clean": [clean_title("Samsung UE55NU7100 55\" 4K Smart TV")],
 print(m.predict(X))
 ```
 
-## Giai đoạn cuối kỳ (12/11 – 22/11)
+## Giai đoạn cuối kỳ 
 
 - Kế hoạch và phân công: `KE_HOACH_CUOI_KY.docx`
 - Chạy **một** thí nghiệm, tự ghi nhật ký: `python src/run_experiment.py --member <ten> --model svc --features full --param C=0.5`
