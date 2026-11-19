@@ -70,3 +70,8 @@
 - **Kết quả chính:** K-Means đạt hiệu suất tối ưu (NMI 0.732); các ngành điện tử tách rõ rệt, nhóm thiết bị lạnh (Fridges/Freezers) có sự chồng lấn.
 - **Nhận xét:** t-SNE và bảng crosstab giúp giải thích rõ nguyên nhân thành công và hạn chế của K-Means trên từng nhóm ngành cụ thể.
 - **Ngày mai:** Chuẩn bị nội dung tiếp theo theo tiến độ dự án.
+## Nhật ký ngày 19/11/2026
+- **Đã làm:** Làm sơ đồ quy trình phân cụm (`thinh_so_do_phan_cum.jpg`); viết nháp báo cáo mục 4.4 và Chương 7 vào `report/nhap/BaoCao_Thinh.docx`.
+- **Kết quả chính:** Chốt cấu hình phân cụm tốt nhất là K-Means (SVD 50, K = 10, NMI 0.7318, ARI 0.623); tổng hợp đối chiếu với MiniBatch, Agglomerative, DBSCAN, HDBSCAN và phân tích t-SNE / độ thuần cụm.
+- **Nhận xét:** Các chỉ số NMI/ARI giúp chọn K và đánh giá độ khớp ngành tin cậy hơn Silhouette; nhóm thiết bị lạnh có sự giao thoa từ vựng nên dễ lẫn nhau.
+- **Ngày mai:** Rà soát lại báo cáo, chuẩn bị trình bày và cập nhật các bước tiếp theo theo kế hoạch nhóm.
