@@ -1,5 +1,6 @@
 # Challenge 1 – Kaggle House Prices: Advanced Regression Techniques
 
+**Bài nộp:** Tuan10/TH10 – Bài tập lớn 15%
 **Nhóm trưởng / Người nộp:** Huỳnh Quốc Danh – MSSV 3124411050 – Trường Đại học Sài Gòn
 **Cuộc thi:** https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques
 **Tài liệu tham khảo:** V. Chugani, *The Beginner's Guide to Data Science* và *Next-Level Data Science* (MachineLearningMastery, 2024)
