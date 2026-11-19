@@ -73,7 +73,7 @@
 
 ## 19/11/2026 – Lộc
 - **Dán bài lên báo cáo chung (Google Docs, tài khoản của Lộc):** Ch.2 (2.1–2.5), Ch.3 (3.1–3.4), mục 4.1, đủ 8 hình (2.1–2.5, 3.1, 3.2, 4.1) và 3 bảng (2.1, 3.1, 4.1), tiêu đề giữ kiểu Tiêu đề 1/2. Dùng bản report/nhap/BaoCao_Loc.docx mới nhất (có phần rà soát 18/11 và Hình 2.5 đã xuất lại) vì bản DanVaoDocs_Loc.docx là bản cũ.
-- **Sau khi dán:** thêm lại 3 dòng "Người viết", trả tiêu đề Chương 4 về "Chương 4. Các mô hình", sửa chú thích Hình 3.1 thành "vẽ bằng draw.io".
+- **Sau khi dán:** trả tiêu đề Chương 4 về "Chương 4. Các mô hình", sửa chú thích Hình 3.1 thành "vẽ bằng draw.io".
 - **Đọc chéo Ch.6:** đến cuối buổi Nhân chưa dán Ch.6 lên Docs; đã chuẩn bị 6 bình luận (SVM 0.9930 → 0.9929 theo danh_20261113_170944; NB 0.9869 và LR 0.9909 khớp nhật ký, LR nên ghi loc_20261114_175918; dẫn chéo mục 3.2–3.4 và Hình 2.4; hai con số 25/47 ở 6.3; nguồn của "57 mẫu" ở 6.4) để đăng khi Nhân dán xong.
 - **Góp ý của Danh cho Ch.2–3:** chưa có bình luận.
 - **Ngày mai (20/11):** dựng slide phần Dữ liệu – Tiền xử lý từ report/nhap/Slide_Loc_nhap.docx vào khung report/slide/Nhom06_Slide_Khung.pptx; đăng bình luận Ch.6 khi Nhân dán.
