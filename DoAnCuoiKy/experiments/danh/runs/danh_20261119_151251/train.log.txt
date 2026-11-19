@@ -1,0 +1,13 @@
+[2026-11-19 15:12:26] Bắt đầu: member=danh model=svc features=hybrid params={'C': 3.0} split=strat cv=True
+[2026-11-19 15:12:26] Đọc dữ liệu: 35311 tiêu đề, 10 ngành
+[2026-11-19 15:12:26] Chia dữ liệu (strat): Train 28248, Test 7063
+[2026-11-19 15:12:30] Fold 0: train 22598 / val 5650 – Macro-F1 0.9893, Accuracy 0.9901, 3.5s
+[2026-11-19 15:12:34] Fold 1: train 22598 / val 5650 – Macro-F1 0.9914, Accuracy 0.9910, 3.7s
+[2026-11-19 15:12:38] Fold 2: train 22598 / val 5650 – Macro-F1 0.9910, Accuracy 0.9906, 4.0s
+[2026-11-19 15:12:42] Fold 3: train 22599 / val 5649 – Macro-F1 0.9931, Accuracy 0.9927, 3.5s
+[2026-11-19 15:12:46] Fold 4: train 22599 / val 5649 – Macro-F1 0.9898, Accuracy 0.9903, 3.5s
+[2026-11-19 15:12:46] CV 5-fold: 0.9909 ± 0.0013
+[2026-11-19 15:12:51] Huấn luyện trên toàn bộ Train: 4.2s
+[2026-11-19 15:12:51] Test: Macro-F1 0.9929, Accuracy 0.9933, sai 47/7063 mẫu
+[2026-11-19 15:12:51] run_id = danh_20261119_151251 (đã thêm 1 dòng vào experiments/danh/experiment_log.csv)
+[2026-11-19 15:12:51] Đã lưu thư mục kết quả: experiments/danh/runs/danh_20261119_151251

@@ -1,0 +1,27 @@
+{
+ "run_id": "danh_20261119_151258",
+ "member": "danh",
+ "ten_thi_nghiem": "final_model_group",
+ "git_commit": "7db5368",
+ "du_lieu": "data/pricerunner_aggregate.csv",
+ "random_state": 42,
+ "n_train": 28157,
+ "n_test": 7154,
+ "cv_folds": 0,
+ "model": "svc",
+ "features": "hybrid",
+ "params": {
+  "C": 3.0
+ },
+ "split": "group",
+ "word_ngram": [
+  1,
+  2
+ ],
+ "char_ngram": [
+  2,
+  4
+ ],
+ "min_df": 2,
+ "svd": null
+}

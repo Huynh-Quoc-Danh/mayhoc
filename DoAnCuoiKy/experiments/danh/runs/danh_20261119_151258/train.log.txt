@@ -1,0 +1,7 @@
+[2026-11-19 15:12:53] Bắt đầu: member=danh model=svc features=hybrid params={'C': 3.0} split=group cv=False
+[2026-11-19 15:12:53] Đọc dữ liệu: 35311 tiêu đề, 10 ngành
+[2026-11-19 15:12:53] Chia dữ liệu (group): Train 28157, Test 7154
+[2026-11-19 15:12:58] Huấn luyện trên toàn bộ Train: 4.5s
+[2026-11-19 15:12:58] Test: Macro-F1 0.9875, Accuracy 0.9876, sai 89/7154 mẫu
+[2026-11-19 15:12:58] run_id = danh_20261119_151258 (đã thêm 1 dòng vào experiments/danh/experiment_log.csv)
+[2026-11-19 15:12:58] Đã lưu thư mục kết quả: experiments/danh/runs/danh_20261119_151258
