@@ -1,0 +1,27 @@
+{
+ "run_id": "loc_20261120_210027",
+ "member": "loc",
+ "ten_thi_nghiem": "lr_best_full",
+ "git_commit": "0e849e7",
+ "du_lieu": "data/pricerunner_aggregate.csv",
+ "random_state": 42,
+ "n_train": 28248,
+ "n_test": 7063,
+ "cv_folds": 5,
+ "model": "lr",
+ "features": "hybrid",
+ "params": {
+  "C": 100
+ },
+ "split": "strat",
+ "word_ngram": [
+  1,
+  2
+ ],
+ "char_ngram": [
+  2,
+  4
+ ],
+ "min_df": 2,
+ "svd": null
+}
