@@ -1,0 +1,13 @@
+[2026-11-20 22:42:23] Bắt đầu: member=nhan model=xgb features=svd params={'n_estimators': 400, 'max_depth': 9, 'learning_rate': 0.1} split=strat cv=True
+[2026-11-20 22:42:24] Đọc dữ liệu: 35311 tiêu đề, 10 ngành
+[2026-11-20 22:42:24] Chia dữ liệu (strat): Train 28248, Test 7063
+[2026-11-20 22:42:50] Fold 0: train 22598 / val 5650 – Macro-F1 0.9727, Accuracy 0.9733, 25.6s
+[2026-11-20 22:43:17] Fold 1: train 22598 / val 5650 – Macro-F1 0.9753, Accuracy 0.9759, 26.3s
+[2026-11-20 22:43:44] Fold 2: train 22598 / val 5650 – Macro-F1 0.9764, Accuracy 0.9765, 26.9s
+[2026-11-20 22:44:12] Fold 3: train 22599 / val 5649 – Macro-F1 0.9773, Accuracy 0.9773, 27.4s
+[2026-11-20 22:44:39] Fold 4: train 22599 / val 5649 – Macro-F1 0.9755, Accuracy 0.9763, 26.9s
+[2026-11-20 22:44:39] CV 5-fold: 0.9754 ± 0.0015
+[2026-11-20 22:45:11] Huấn luyện trên toàn bộ Train: 32.0s
+[2026-11-20 22:45:12] Test: Macro-F1 0.9789, Accuracy 0.9792, sai 147/7063 mẫu
+[2026-11-20 22:45:12] run_id = nhan_20261120_224512 (đã thêm 1 dòng vào experiments/nhan/experiment_log.csv)
+[2026-11-20 22:45:12] Đã lưu thư mục kết quả: experiments\nhan\runs\nhan_20261120_224512
