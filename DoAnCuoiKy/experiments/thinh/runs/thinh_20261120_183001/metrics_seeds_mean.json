@@ -1,0 +1,12 @@
+{
+ "inertia_mean": 22431.981602,
+ "silhouette_mean": 0.296925,
+ "ari_mean": 0.605924,
+ "nmi_mean": 0.729353,
+ "fit_time_s_mean": 1.440111,
+ "inertia_std": 57.096432,
+ "silhouette_std": 0.002817,
+ "ari_std": 0.035707,
+ "nmi_std": 0.011521,
+ "fit_time_s_std": 0.202496
+}

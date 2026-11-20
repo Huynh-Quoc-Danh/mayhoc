@@ -75,3 +75,8 @@
 - **Kết quả chính:** Chốt cấu hình phân cụm tốt nhất là K-Means (SVD 50, K = 10, NMI 0.7318, ARI 0.623); tổng hợp đối chiếu với MiniBatch, Agglomerative, DBSCAN, HDBSCAN và phân tích t-SNE / độ thuần cụm.
 - **Nhận xét:** Các chỉ số NMI/ARI giúp chọn K và đánh giá độ khớp ngành tin cậy hơn Silhouette; nhóm thiết bị lạnh có sự giao thoa từ vựng nên dễ lẫn nhau.
 - **Ngày mai:** Rà soát lại báo cáo, chuẩn bị trình bày và cập nhật các bước tiếp theo theo kế hoạch nhóm.
+## Nhật ký ngày 20/11/2026
+- **Đã làm:** chạy lại K-Means SVD 50 K = 10 với thư mục kết quả đầy đủ (run_id …); viết 4.4 và Ch.7 trên Google Docs; làm slide 12–13.
+- **Kết quả chính:** xác nhận cấu hình K-Means (SVD 50, K = 10) ổn định qua 5 seed; hoàn tất nội dung và hình ảnh mục 4.4 và Chương 7 trên báo cáo chung.
+- **Nhận xét:** bộ file xuất ra trong thư mục run giúp tra cứu đầy đủ chỉ số từng seed và độ thuần từng cụm rất thuận tiện khi đối chiếu báo cáo.
+- **Ngày mai:** sửa Ch.7 theo góp ý; tập nói phần phân cụm.

@@ -1,0 +1,30 @@
+{
+ "run_id": "thinh_20261120_183001",
+ "member": "thinh",
+ "ten_thi_nghiem": "kmeans_final",
+ "git_commit": "b2a1a47",
+ "du_lieu": "data/pricerunner_aggregate.csv",
+ "n_mau": 35311,
+ "bieu_dien": "TF-IDF word (1,2) + SVD + L2",
+ "tfidf": {
+  "ngram_range": [
+   1,
+   2
+  ],
+  "min_df": 2,
+  "sublinear_tf": true,
+  "token_pattern": "(?u)\\b[\\w\\-\\.\\+]+\\b"
+ },
+ "svd": 50,
+ "algo": "kmeans",
+ "K": 10,
+ "n_init": 10,
+ "seeds": [
+  42,
+  0,
+  1,
+  2,
+  3
+ ],
+ "seed_chinh": 42
+}
