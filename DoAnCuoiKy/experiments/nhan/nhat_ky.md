@@ -12,6 +12,7 @@
 | 17/11 | Vẽ sơ đồ XGBoost bằng draw.io (docs/hinh_ve_tay/nhan_so_do_xgboost.jpg): quy trình và so sánh boosting với bagging. Viết mục 10 notebook 06 tổng kết nhánh mô hình cây. Bắt đầu báo cáo report/nhap/BaoCao_Nhan.docx, viết xong 6.1 và 6.2 | Bảng 6.1: SVM 0.9930 > LR 0.9909 > NB 0.9869 > CNB 0.9857 > XGB 0.9789 > RF 0.9732 > DT 0.9408, có run_id từng dòng | Freezers chỉ thấp nhất ở SVM, LR, CNB; mô hình cây và NB thì Fridges thấp nhất. Mai viết tiếp 6.3, 6.4 và mục 4.3. |
 | 18/11 | Viết nốt báo cáo report/nhap/BaoCao_Nhan.docx: mục 4.3 (DT, RF, XGBoost, bagging vs boosting, bảng tinh chỉnh) và 6.3-6.5 (47 lỗi mô hình cuối, so lỗi SVM 47 / XGBoost 147, tổng kết). Sửa sơ đồ draw.io: TF-IDF khoảng 90.000 cột chứ không phải 68.000, bỏ tên trên tiêu đề hình. Danh chốt dùng draw.io nên không vẽ tay | Báo cáo đủ 4.3 và 6.1-6.5, không còn chữ xám, số nào cũng có run_id | Lỗi của mô hình cuối chủ yếu do dữ liệu (mã model, nhãn sai, tiếng Đức mất dấu), đổi mô hình khó cải thiện thêm. |
 | 19/11 | Sửa báo cáo BaoCao_Nhan.docx: đổi chú thích thành Hình 4.3, 4.4, Bảng 4.2, thêm câu giải thích 2 bộ TF-IDF (cây dùng word + char 3-5 khoảng 90.293 cột, SVM dùng char 2-4 có 68.324 cột). Bắt đầu chép 4.3 và Ch.6 lên Google Docs, mai làm tiếp. Tạo file mô hình cho web demo (model_demo, nhan_20261119_232556), chạy streamlit và quay video demo_nhom06, đã gửi link Drive cho Danh | Mô hình demo ra 0.9929. Video có 3 tiêu đề đúng và 1 tiêu đề sai (siemens sf65) | Chưa đọc chéo Ch.7 vì Thịnh chưa viết. Mai: viết tiếp Docs và đọc chéo Ch.7. |
+| 20/11 | Chạy lại XGBoost tốt nhất với thư mục kết quả đầy đủ: xgb_best_full (nhan_20261120_224512), thư mục runs/nhan_20261120_224512 có đủ 9 file. Đếm lại lỗi từ predictions_test.csv. Làm sẵn slide 9, 10, 11, 14 (chưa đưa lên, chờ gom slide chung) | Test 0.9789, CV 0.9754 ± 0.0015, sai 147/7063, giống hệt lần 15/11 | Kết quả lặp lại được. Việc còn lại: viết 4.3 và Ch.6 lên Google Docs, đọc chéo Ch.7 của Thịnh. |
 
 ## Câu hỏi tự trả lời
 
@@ -59,3 +60,7 @@ Mô hình cuối (LinearSVC) chỉ sai 47 trên 7.063 mẫu. Hơn một nửa l�
 **19/11 – Vì sao mô hình cây và SVM dùng hai số cột TF-IDF khác nhau?**
 
 Hai bên dùng hai bộ đặc trưng khác nhau. SVM và LR dùng từ (1,2) cộng n-gram ký tự (2,4), ra 68.324 cột. Mô hình cây dùng từ (1,2) cộng n-gram ký tự (3,5), ra khoảng 90.293 cột, rồi mới nén bằng SVD còn 100-150 chiều. Nên hai con số đều đúng, chỉ cần ghi rõ bộ nào trong báo cáo để thầy không thấy mâu thuẫn.
+
+**20/11 – Chạy lại XGBoost có ra đúng như cũ không?**
+
+Có. Em chạy lại đúng cấu hình tốt nhất (svd 100, 400 cây, depth 9, lr 0.1) với code mới lưu thư mục kết quả đầy đủ (nhan_20261120_224512). Kết quả ra y hệt hôm 15/11: test 0.9789, CV 0.9754 +- 0.0015. Em đếm lại trong predictions_test.csv cũng đúng 147 mẫu sai trên 7.063, khớp với số trong Chương 6. Vì random_state cố định nên chạy lại bao nhiêu lần cũng ra giống nhau.

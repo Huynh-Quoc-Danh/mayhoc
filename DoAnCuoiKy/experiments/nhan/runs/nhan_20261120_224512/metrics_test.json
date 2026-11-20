@@ -1,0 +1,14 @@
+{
+ "cv_f1_macro_mean": 0.975428,
+ "cv_f1_macro_std": 0.001544,
+ "cv_time_s": 135.447587,
+ "train_time_s": 32.014406,
+ "test_accuracy": 0.979187,
+ "test_precision_macro": 0.97921,
+ "test_recall_macro": 0.978691,
+ "test_f1_macro": 0.978895,
+ "test_f1_weighted": 0.979239,
+ "f1_Fridges": 0.939166,
+ "f1_Freezers": 0.951945,
+ "f1_Fridge_Freezers": 0.967506
+}
