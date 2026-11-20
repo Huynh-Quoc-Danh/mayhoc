@@ -1,0 +1,11 @@
+[2026-11-20 18:27:27] Bắt đầu: K-Means K=10, SVD 50, n_init=10, seeds=[42, 0, 1, 2, 3]
+[2026-11-20 18:27:33] Biểu diễn: TF-IDF 37547 cột → SVD 50 chiều, 6.3s
+[2026-11-20 18:28:21] Seed 42: NMI 0.7318, ARI 0.6230, Silhouette 0.3017, 1.5s
+[2026-11-20 18:28:50] Seed 0: NMI 0.7379, ARI 0.6497, Silhouette 0.2957, 1.5s
+[2026-11-20 18:29:18] Seed 1: NMI 0.7356, ARI 0.6299, Silhouette 0.2985, 1.3s
+[2026-11-20 18:29:43] Seed 2: NMI 0.7348, ARI 0.5643, Silhouette 0.2943, 1.7s
+[2026-11-20 18:30:01] Seed 3: NMI 0.7066, ARI 0.5628, Silhouette 0.2945, 1.1s
+[2026-11-20 18:30:01] Kết quả chính (seed 42): NMI 0.7318, ARI 0.6230
+[2026-11-20 18:30:01] Độ ổn định qua 5 seed: NMI 0.7294 ± 0.0115
+[2026-11-20 18:30:02] run_id = thinh_20261120_183001 (đã thêm 1 dòng vào experiments/thinh/cluster_log.csv)
+[2026-11-20 18:30:02] Đã lưu thư mục kết quả: experiments\thinh\runs\thinh_20261120_183001
