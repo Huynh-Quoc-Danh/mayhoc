@@ -1,0 +1,12 @@
+{
+ "n_train_mean": 22598.4,
+ "n_val_mean": 5649.6,
+ "f1_macro_mean": 0.986111,
+ "accuracy_mean": 0.986229,
+ "train_time_s_mean": 1.060204,
+ "n_train_std": 0.489898,
+ "n_val_std": 0.489898,
+ "f1_macro_std": 0.001371,
+ "accuracy_std": 0.001238,
+ "train_time_s_std": 0.085955
+}

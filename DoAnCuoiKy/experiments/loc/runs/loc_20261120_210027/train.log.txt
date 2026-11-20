@@ -1,0 +1,13 @@
+[2026-11-20 21:00:01] Bắt đầu: member=loc model=lr features=hybrid params={'C': 100} split=strat cv=True
+[2026-11-20 21:00:01] Đọc dữ liệu: 35311 tiêu đề, 10 ngành
+[2026-11-20 21:00:01] Chia dữ liệu (strat): Train 28248, Test 7063
+[2026-11-20 21:00:06] Fold 0: train 22598 / val 5650 – Macro-F1 0.9846, Accuracy 0.9857, 3.8s
+[2026-11-20 21:00:09] Fold 1: train 22598 / val 5650 – Macro-F1 0.9871, Accuracy 0.9873, 3.5s
+[2026-11-20 21:00:13] Fold 2: train 22598 / val 5650 – Macro-F1 0.9885, Accuracy 0.9881, 3.9s
+[2026-11-20 21:00:18] Fold 3: train 22599 / val 5649 – Macro-F1 0.9889, Accuracy 0.9888, 3.8s
+[2026-11-20 21:00:21] Fold 4: train 22599 / val 5649 – Macro-F1 0.9884, Accuracy 0.9888, 3.5s
+[2026-11-20 21:00:21] CV 5-fold: 0.9875 ± 0.0016
+[2026-11-20 21:00:26] Huấn luyện trên toàn bộ Train: 5.0s
+[2026-11-20 21:00:27] Test: Macro-F1 0.9909, Accuracy 0.9912, sai 62/7063 mẫu
+[2026-11-20 21:00:27] run_id = loc_20261120_210027 (đã thêm 1 dòng vào experiments/loc/experiment_log.csv)
+[2026-11-20 21:00:27] Đã lưu thư mục kết quả: experiments/loc/runs/loc_20261120_210027
