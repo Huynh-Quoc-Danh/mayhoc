@@ -82,3 +82,11 @@
 - Chạy lại 2 cấu hình tốt nhất với thư mục kết quả đầy đủ (code PR #61): LR C=100 hybrid char (2,4) – loc_20261120_210027: CV 0.9875 ± 0.0016, Test 0.9909; NB alpha=0.03 – loc_20261120_210139: CV 0.9861 ± 0.0014, Test 0.9869. Trùng khớp run 14/11 (loc_20261114_175918, loc_20261114_175845), 5 fold chênh nhau khoảng 0.004 → kết quả tái lập được. Đã điền nhận xét cho 2 dòng.
 - Thêm điểm CV và run_id mới vào mục 4.1 trên Google Docs.
 - Slide 3–5 (Dữ liệu, EDA, Tiền xử lý) trong report/slide/Slide_Loc.pptx; slide 4 dùng Hình 2.4 bản draw.io cho khớp số 61–66%.
+
+## 21/11/2026 – Lộc
+- Kiểm tra chạy lại từ bản clone mới trên Mac (Python 3.12, venv sạch, pip install -r requirements.txt): cài xong không lỗi, xgboost chạy được, không cần cài thêm libomp.
+- SVC C=3 hybrid char (2,4) (loc_20261121_234641, chạy trong bản clone): Test Macro-F1 0.9929, Accuracy 0.9933, khớp mô hình cuối danh_20261113_170944.
+- K-Means K=10, SVD 50 (loc_20261121_234701, chạy trong bản clone): NMI 0.7318, ARI 0.6230; 5 seed NMI 0.7294 ± 0.0115, khớp kết quả của Thịnh.
+- Thư mục kết quả của 2 run trên nằm trong bản clone, đã xóa sau khi kiểm tra, không commit.
+- Cập nhật README.md: thêm bước tạo venv, mục chạy lại kết quả cuối kỳ (2 lệnh trên) và web demo (--save-model rồi đổi tên thành final_svc_hybrid24_C3.joblib), sửa ghi chú XGBoost, sửa ví dụ dùng mô hình (models/ không có trên GitHub).
+- Góp ý Ch.6 của Nhân bằng bình luận trên Google Docs: run_id LR trong Bảng 6.1, Hình 6.1 còn dùng run 0.9930, con số 25/47 thứ hai ở 6.3, nguồn của 57 mẫu ở 6.4, lỗi lặp chữ ở Hình 6.2.
