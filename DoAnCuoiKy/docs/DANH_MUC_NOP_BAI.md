@@ -1,4 +1,4 @@
-# Danh mục nộp bài – Nhom06_ProductClassification_HuynhQuocDanh_3124411050.zip
+# Danh mục nộp bài – Nhom06_ProductClassificationClustering_HuynhQuocDanh_3124411050.zip
 
 - [ ] Báo cáo cuối kỳ (.docx tải từ Google Docs, có trang bìa SGU)
 - [ ] Slide thuyết trình (.pptx)
