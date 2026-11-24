@@ -26,7 +26,25 @@ def fill(ws, df):
             if isinstance(v, float) and pd.isna(v):
                 continue
             ws.cell(i, j, v.item() if hasattr(v, "item") else v)
-    ws.freeze_panes = "A2"
+    ws.freeze_panes = "B2"
+    if ws.max_row > 1:
+        ws.auto_filter.ref = ws.dimensions
+    from openpyxl.utils import get_column_letter
+    for j, h in enumerate(heads, start=1):
+        if h is None:
+            continue
+        col = get_column_letter(j)
+        vals = [str(ws.cell(r, j).value or "") for r in range(1, ws.max_row + 1)]
+        w = min(max(len(v) for v in vals) + 2, 60)
+        if h in ("nhan_xet", "rut_ra"):
+            w = 60
+            for r in range(2, ws.max_row + 1):
+                ws.cell(r, j).alignment = Alignment(wrap_text=True, vertical="top")
+        ws.column_dimensions[col].width = max(w, 10)
+        if h.startswith(("cv_", "test_", "f1_", "nmi", "ari", "silhouette")):
+            for r in range(2, ws.max_row + 1):
+                if isinstance(ws.cell(r, j).value, float):
+                    ws.cell(r, j).number_format = "0.0000"
     return len(df)
 
 sheets = {"Danh": "danh", "Loc": "loc", "Nhan": "nhan", "Thinh": "thinh"}
