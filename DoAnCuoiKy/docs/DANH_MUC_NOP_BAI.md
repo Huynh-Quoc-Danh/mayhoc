@@ -2,7 +2,7 @@
 
 - [x] Báo cáo cuối kỳ: report/BaoCao_Nhom06_ProductClassificationClustering.docx (+ .pdf) – có bìa SGU, lời cảm ơn, nhận xét GV, mục lục, danh mục hình, danh mục bảng
 - [x] Slide thuyết trình: report/slide/Nhom06_Slide.pptx (ghép từ 4 file của từng người)
-- [ ] Poster A3: report/Nhom06_Poster.pdf (xuất lại PDF sau khi sửa tràn trang)
+- [x] Poster A3: report/Nhom06_Poster.pdf
 - [x] Video demo web (Nhân quay): https://drive.google.com/file/d/1YArk71B-SlIPGw4kp-NTzNkMAnZIeW6I/view?usp=drive_link
 - [x] Mã nguồn: src/, app/, scripts/, notebooks/ 01–07, requirements.txt
 - [x] Nhật ký thí nghiệm: experiments/<tên>/ (CSV, runs/, HTML notebook) + bảng tổng hợp experiments/BangTheoDoi_ThiNghiem_GoogleSheets.xlsx
