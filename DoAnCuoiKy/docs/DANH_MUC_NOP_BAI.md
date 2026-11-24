@@ -8,5 +8,5 @@
 - [x] Nhật ký thí nghiệm: experiments/<tên>/ (CSV, runs/*.json, HTML notebook)
 - [x] Hình: figures/ + FIGURE_INDEX.csv
 - [x] Sơ đồ: docs/hinh_ve_tay/ (4 người)
-- [ ] experiments/quyet_dinh_nhom.md – điền bảng đóng góp (tổng 100%)
-- [ ] README.md – hướng dẫn chạy lại
+- [x] experiments/quyet_dinh_nhom.md – điền bảng đóng góp (mỗi người 25%)
+- [x] README.md – hướng dẫn chạy lại
